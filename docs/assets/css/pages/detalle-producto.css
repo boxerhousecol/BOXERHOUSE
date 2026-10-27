@@ -1,0 +1,820 @@
+/* =====================================================
+           DETALLE DEL PRODUCTO
+        ====================================================== */
+
+        .product-detail {
+
+            padding:
+                130px 30px 70px;
+
+            background:
+                #f5f5f5;
+
+            min-height:
+                100vh;
+
+        }
+
+
+        .product-detail-container {
+
+            max-width:
+                1200px;
+
+            margin:
+                auto;
+
+            display:
+                grid;
+
+            grid-template-columns:
+                1.1fr 0.9fr;
+
+            gap:
+                45px;
+
+            align-items:
+                start;
+
+        }
+
+
+        /* =====================================================
+           VOLVER
+        ====================================================== */
+
+        .back-products {
+
+            grid-column:
+                1 / -1;
+
+            margin-bottom:
+                -10px;
+
+        }
+
+
+        .back-products a {
+
+            color:
+                #080808;
+
+            text-decoration:
+                none;
+
+            font-size:
+                14px;
+
+            font-weight:
+                800;
+
+        }
+
+
+        .back-products a:hover {
+
+            color:
+                #e00000;
+
+        }
+
+
+        /* =====================================================
+           GALERÍA
+        ====================================================== */
+
+        .product-detail-images {
+
+            width:
+                100%;
+
+        }
+
+
+        .product-detail-main-image {
+
+            width:
+                100%;
+
+            height:
+                520px;
+
+            background:
+                #ffffff;
+
+            border-radius:
+                20px;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            overflow:
+                hidden;
+
+            box-shadow:
+                0 10px 30px rgba(
+                    0,
+                    0,
+                    0,
+                    0.08
+                );
+
+        }
+
+
+        .product-detail-main-image img {
+
+            width:
+                100%;
+
+            height:
+                100%;
+
+            object-fit:
+                contain;
+
+            padding:
+                25px;
+
+        }
+
+
+        /* =====================================================
+           MINIATURAS
+        ====================================================== */
+
+        .product-thumbnails {
+
+            display:
+                flex;
+
+            flex-direction:
+                row;
+
+            flex-wrap:
+                wrap;
+
+            gap:
+                12px;
+
+            margin-top:
+                15px;
+
+        }
+
+
+        .product-thumbnails .thumbnail {
+
+            display:
+                block;
+
+            width:
+                85px;
+
+            height:
+                85px;
+
+            padding:
+                5px;
+
+            background:
+                #ffffff;
+
+            border:
+                2px solid #dddddd;
+
+            border-radius:
+                10px;
+
+            cursor:
+                pointer;
+
+            overflow:
+                hidden;
+
+            transition:
+                0.25s ease;
+
+        }
+
+
+        .product-thumbnails
+        .thumbnail img {
+
+            width:
+                100%;
+
+            height:
+                100%;
+
+            object-fit:
+                contain;
+
+        }
+
+
+        .product-thumbnails
+        .thumbnail.active {
+
+            border-color:
+                #080808;
+
+        }
+
+
+        .product-thumbnails
+        .thumbnail:hover {
+
+            border-color:
+                #080808;
+
+            transform:
+                translateY(-2px);
+
+        }
+
+
+        /* =====================================================
+           INFORMACIÓN
+        ====================================================== */
+
+        .product-detail-info {
+
+            background:
+                #ffffff;
+
+            padding:
+                35px;
+
+            border-radius:
+                20px;
+
+            box-shadow:
+                0 10px 30px rgba(
+                    0,
+                    0,
+                    0,
+                    0.08
+                );
+
+        }
+
+
+        .product-detail-brand {
+
+            display:
+                block;
+
+            font-size:
+                13px;
+
+            font-weight:
+                800;
+
+            letter-spacing:
+                2px;
+
+            color:
+                #666666;
+
+            margin-bottom:
+                8px;
+
+        }
+
+
+        .product-detail-info h1 {
+
+            margin:
+                0 0 15px;
+
+            font-size:
+                38px;
+
+            font-weight:
+                900;
+
+            color:
+                #080808;
+
+        }
+
+
+        .product-detail-price {
+
+            display:
+                block;
+
+            font-size:
+                28px;
+
+            font-weight:
+                900;
+
+            color:
+                #080808;
+
+            margin-bottom:
+                35px;
+
+        }
+
+
+        /* =====================================================
+           DESCRIPCIÓN
+        ====================================================== */
+
+        .product-detail-description {
+
+            margin-bottom:
+                30px;
+
+        }
+
+
+        .product-detail-description h3 {
+
+            display:
+                none;
+
+        }
+
+
+        .product-detail-description p {
+
+            color:
+                #666666;
+
+            font-size:
+                15px;
+
+            line-height:
+                1.7;
+
+            margin:
+                0;
+
+        }
+
+
+        /* =====================================================
+           OPCIONES
+        ====================================================== */
+
+        .detail-option {
+
+            margin-bottom:
+                25px;
+
+        }
+
+
+        .detail-option h3 {
+
+            font-size:
+                14px;
+
+            margin-bottom:
+                12px;
+
+            text-transform:
+                uppercase;
+
+        }
+
+
+        /* =====================================================
+           COLORES
+        ====================================================== */
+
+        .detail-colors {
+
+            display:
+                flex;
+
+            flex-wrap:
+                wrap;
+
+            gap:
+                9px;
+
+        }
+
+
+        .color-option {
+
+            padding:
+                10px 16px;
+
+            border:
+                1px solid #cccccc;
+
+            border-radius:
+                8px;
+
+            background:
+                #ffffff;
+
+            color:
+                #222222;
+
+            text-decoration:
+                none;
+
+            font-size:
+                13px;
+
+            font-weight:
+                700;
+
+            transition:
+                0.25s ease;
+
+        }
+
+
+        .color-option:hover {
+
+            border-color:
+                #080808;
+
+            transform:
+                translateY(-2px);
+
+        }
+
+
+        .color-option.selected {
+
+            background:
+                #080808;
+
+            color:
+                #ffffff;
+
+            border-color:
+                #080808;
+
+        }
+
+
+        /* =====================================================
+           BOTÓN PACK
+        ====================================================== */
+
+        .pack-label {
+
+            display:
+                inline-block;
+
+            padding:
+                10px 16px;
+
+            background:
+                #080808;
+
+            color:
+                #ffffff;
+
+            border-radius:
+                8px;
+
+            font-size:
+                13px;
+
+            font-weight:
+                800;
+
+        }
+
+
+        /* =====================================================
+           TALLAS
+        ====================================================== */
+
+        .detail-sizes {
+
+            display:
+                flex;
+
+            flex-wrap:
+                wrap;
+
+            gap:
+                10px;
+
+        }
+
+
+        .size-option {
+
+            width:
+                55px;
+
+            height:
+                45px;
+
+            border:
+                1px solid #cccccc;
+
+            border-radius:
+                8px;
+
+            background:
+                #ffffff;
+
+            color:
+                #080808;
+
+            font-weight:
+                800;
+
+            cursor:
+                pointer;
+
+            transition:
+                0.25s ease;
+
+        }
+
+
+        .size-option:hover:not(
+            :disabled
+        ) {
+
+            border-color:
+                #080808;
+
+            transform:
+                translateY(-2px);
+
+        }
+
+
+        .size-option.active {
+
+            background:
+                #080808;
+
+            color:
+                #ffffff;
+
+            border-color:
+                #080808;
+
+        }
+
+
+        .size-option:disabled {
+
+            opacity:
+                0.35;
+
+            cursor:
+                not-allowed;
+
+        }
+
+
+        /* =====================================================
+           STOCK
+        ====================================================== */
+
+        .detail-stock {
+
+            padding:
+                15px;
+
+            background:
+                #f5f5f5;
+
+            border-radius:
+                9px;
+
+            margin-bottom:
+                20px;
+
+        }
+
+
+        .detail-stock span {
+
+            display:
+                block;
+
+            font-weight:
+                800;
+
+        }
+
+
+        .detail-stock small {
+
+            display:
+                block;
+
+            margin-top:
+                5px;
+
+            color:
+                #777777;
+
+        }
+
+
+        .stock-available {
+
+            color:
+                #168a3a;
+
+        }
+
+
+        .stock-unavailable {
+
+            color:
+                #d00000;
+
+        }
+
+
+        /* =====================================================
+           BOTÓN CARRITO
+        ====================================================== */
+
+        .detail-cart-btn {
+
+            width:
+                100%;
+
+            padding:
+                17px;
+
+            border:
+                none;
+
+            border-radius:
+                9px;
+
+            background:
+                #080808;
+
+            color:
+                #ffffff;
+
+            font-size:
+                14px;
+
+            font-weight:
+                900;
+
+            letter-spacing:
+                1px;
+
+            cursor:
+                pointer;
+
+            transition:
+                transform 0.25s ease,
+                background 0.25s ease,
+                box-shadow 0.25s ease;
+
+        }
+
+
+        .detail-cart-btn:hover {
+
+            background:
+                #e00000;
+
+            transform:
+                translateY(-2px);
+
+            box-shadow:
+                0 10px 25px rgba(
+                    0,
+                    0,
+                    0,
+                    0.15
+                );
+
+        }
+
+
+        .detail-cart-btn.disabled,
+        .detail-cart-btn:disabled {
+
+            background:
+                #999999;
+
+            cursor:
+                not-allowed;
+
+            transform:
+                none;
+
+            box-shadow:
+                none;
+
+        }
+
+
+        /* =====================================================
+           RESPONSIVE
+        ====================================================== */
+
+        @media (
+            max-width: 900px
+        ) {
+
+            .product-detail-container {
+
+                grid-template-columns:
+                    1fr;
+
+                max-width:
+                    700px;
+
+            }
+
+
+            .product-detail-main-image {
+
+                height:
+                    500px;
+
+            }
+
+        }
+
+
+        @media (
+            max-width: 600px
+        ) {
+
+            .product-detail {
+
+                padding:
+                    110px 15px 50px;
+
+            }
+
+
+            .product-detail-info {
+
+                padding:
+                    25px 20px;
+
+            }
+
+
+            .product-detail-info h1 {
+
+                font-size:
+                    30px;
+
+            }
+
+
+            .product-detail-price {
+
+                font-size:
+                    27px;
+
+            }
+
+
+            .product-detail-main-image {
+
+                height:
+                    380px;
+
+            }
+
+
+            .product-thumbnails {
+
+                gap:
+                    8px;
+
+            }
+
+
+            .product-thumbnails
+            .thumbnail {
+
+                width:
+                    70px;
+
+                height:
+                    70px;
+
+            }
+
+        }

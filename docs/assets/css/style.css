@@ -1,0 +1,8313 @@
+/* =========================================================
+   1. RESET Y CONFIGURACIÓN GENERAL
+   ---------------------------------------------------------
+   Elimina los márgenes y espacios predeterminados del
+   navegador y hace que el tamaño de los elementos sea
+   más fácil de controlar.
+========================================================= */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #000;
+    color: #fff;
+}
+
+
+/* =========================================================
+   2. HEADER / ENCABEZADO
+   ---------------------------------------------------------
+   Barra superior que permanece fija mientras el usuario
+   navega por la página.
+========================================================= */
+
+.header {
+    width: 100%;
+    height: 90px;
+
+    background: #000;
+    border-bottom: 1px solid #363636;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    z-index: 1000;
+}
+
+
+/* =========================================================
+   3. CONTENEDOR PRINCIPAL DEL HEADER
+   ---------------------------------------------------------
+   Organiza horizontalmente:
+   - Logo
+   - Menú
+   - Carrito
+   - Botón del menú móvil
+========================================================= */
+
+.container {
+    max-width: 1250px;
+    height: 100%;
+
+    margin: auto;
+    padding: 0 30px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+/* =========================================================
+   4. LOGO
+   ---------------------------------------------------------
+   Controla el tamaño, posición y efecto del logo.
+========================================================= */
+
+.logo {
+    display: flex;
+    align-items: center;
+
+}
+
+.logo img {
+    width: 200px;
+    height: 90px;
+
+    object-fit: contain;
+
+    transition: 0.3s;
+}
+
+
+/* Efecto al pasar el mouse sobre el logo */
+
+.logo img:hover {
+    transform: scale(1.05);
+}
+
+
+/* =========================================================
+   5. NAVBAR / MENÚ DE ESCRITORIO
+   ---------------------------------------------------------
+   Menú que aparece en computadores y pantallas grandes.
+========================================================= */
+
+.navbar {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+
+/* Enlaces principales del menú */
+
+.navbar a {
+    position: relative;
+
+    color: #fff;
+    text-decoration: none;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    text-transform: uppercase;
+
+    transition: 0.3s;
+}
+
+
+/* Línea que aparece debajo del enlace */
+
+.navbar a::after {
+    content: "";
+
+    position: absolute;
+
+    width: 0;
+    height: 2px;
+
+    background: rgb(218, 8, 8);
+
+    left: 0;
+    bottom: -8px;
+
+    transition: 0.3s;
+}
+
+
+/* Cambio de color al pasar el mouse */
+
+.navbar a:hover {
+    color: #aaaaaa;
+}
+
+
+/* Animación de la línea inferior */
+
+.navbar a:hover::after {
+    width: 100%;
+}
+
+
+/* =========================================================
+   6. ACCIONES DEL HEADER
+   ---------------------------------------------------------
+   Contiene los elementos que aparecen en el lado derecho
+   del encabezado, como el carrito y el menú móvil.
+========================================================= */
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+
+/* =========================================================
+   7. CARRITO DE COMPRAS
+   ---------------------------------------------------------
+   Botón que permite abrir el carrito.
+========================================================= */
+
+.cart-btn {
+    position: relative;
+
+    background: transparent;
+    border: none;
+
+    color: #fff;
+
+    font-size: 22px;
+
+    cursor: pointer;
+}
+
+
+/* ---------------------------------------------------------
+   CONTADOR DEL CARRITO
+   ---------------------------------------------------------
+   Pequeño círculo que muestra la cantidad de productos.
+--------------------------------------------------------- */
+
+#cartCount {
+    position: absolute;
+
+    top: -8px;
+    right: -10px;
+
+    width: 18px;
+    height: 18px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #fff;
+    color: #000;
+
+    border-radius: 50%;
+
+    font-size: 11px;
+    font-weight: bold;
+}
+
+
+/* =========================================================
+   8. BOTÓN MENÚ MÓVIL
+   ---------------------------------------------------------
+   Botón de las tres rayas que aparece únicamente en
+   celulares y pantallas pequeñas.
+========================================================= */
+
+.menu-btn {
+    display: none;
+    background: transparent;
+    border: none;
+    color: #ffffff;
+    font-size: 30px;
+    cursor: pointer;
+    padding: 5px;
+    position: relative;
+    z-index: 10001;
+}
+
+/* =========================================================
+   9. MENÚ LATERAL MÓVIL
+   ---------------------------------------------------------
+   Menú que aparece desde el lado izquierdo al pulsar
+   el botón de las tres rayas.
+========================================================= */
+
+.mobile-menu {
+    position: fixed;
+
+    top: 0;
+    left: -280px;
+
+    width: 280px;
+    height: 100vh;
+
+    background: #111;
+
+    padding: 30px 25px;
+
+    z-index: 9999;
+
+    transition: left 0.3s ease;
+
+    box-shadow: 5px 0 20px rgba(0, 0, 0, 0.3);
+}
+
+
+/* ---------------------------------------------------------
+   MENÚ MÓVIL ABIERTO
+   ---------------------------------------------------------
+   Cuando JavaScript agrega la clase "active", el menú
+   se desplaza hacia la pantalla.
+--------------------------------------------------------- */
+
+.mobile-menu.active {
+    left: 0;
+}
+
+
+/* Nombre de la marca dentro del menú */
+
+.mobile-menu h2 {
+    color: #fff;
+
+    margin-bottom: 40px;
+
+    font-size: 22px;
+}
+
+
+/* Enlaces del menú móvil */
+
+.mobile-menu a {
+    display: block;
+
+    color: #fff;
+
+    text-decoration: none;
+
+    font-size: 18px;
+
+    padding: 18px 5px;
+
+    border-bottom: 1px solid #333;
+
+    transition: 0.2s;
+}
+
+
+/* Efecto al pasar el mouse */
+
+.mobile-menu a:hover {
+    padding-left: 12px;
+}
+
+
+/* ---------------------------------------------------------
+   BOTÓN X PARA CERRAR EL MENÚ
+--------------------------------------------------------- */
+
+.close-menu {
+    position: absolute;
+
+    top: 18px;
+    right: 20px;
+
+    background: none;
+    border: none;
+
+    color: #fff;
+
+    font-size: 20px;
+
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   10. HERO / PÁGINA PRINCIPAL
+   ---------------------------------------------------------
+   Sección principal de inicio de BOXER'S HOUSE.
+========================================================= */
+
+.hero {
+    min-height: 100vh;
+
+    padding-top: 90px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    background: #000;
+}
+
+
+/* Contenedor del contenido del Hero */
+
+.hero-content {
+    max-width: 800px;
+    position: relative;
+    z-index: 10;
+}
+
+/* Texto pequeño superior */
+
+.hero-subtitle {
+    color: #ff0202;
+
+    font-size: 13px;
+
+    letter-spacing: 5px;
+
+    margin-bottom: 20px;
+}
+
+
+/* Título principal */
+
+.hero h1 {
+    font-size: clamp(60px, 10vw, 140px);
+
+    line-height: 0.85;
+
+    font-weight: 900;
+
+    letter-spacing: -5px;
+}
+
+
+/* Parte roja del título */
+
+.hero h1 span {
+    color: #ff0202;
+}
+
+
+/* Descripción debajo del título */
+
+.hero p:not(.hero-subtitle) {
+    margin-top: 30px;
+
+    color: #9b9b9b;
+
+    font-size: 18px;
+}
+
+
+/* =========================================================
+   11. BOTONES GENERALES
+   ---------------------------------------------------------
+   Estilo reutilizable para botones principales de la web.
+========================================================= */
+
+.btn {
+    display: inline-block;
+    margin-top: 35px;
+    padding: 15px 35px;
+
+    background: #fff;
+    color: #000;
+
+    text-decoration: none;
+
+    font-size: 13px;
+    font-weight: bold;
+
+    letter-spacing: 2px;
+
+    position: relative;
+    z-index: 20;
+
+    cursor: pointer;
+}
+
+
+/* Efecto al pasar el mouse */
+
+.btn:hover {
+    background: #ccc;
+
+    transform: translateY(-3px);
+}
+
+
+/* =========================================================
+   12. PÁGINA DE CONTACTO
+   ---------------------------------------------------------
+   Fondo y separación general de la página de contacto.
+========================================================= */
+
+.page-section {
+    min-height: 100vh;
+
+    padding: 140px 20px 80px;
+
+    background: #f7f7f7;
+
+    color: #111;
+}
+
+
+/* =========================================================
+   13. TÍTULO PRINCIPAL DE CONTACTO
+   ---------------------------------------------------------
+   Contiene:
+   "Contáctanos"
+   y el texto:
+   "¿Tienes alguna pregunta? Estamos aquí para ayudarte."
+========================================================= */
+
+.contact-title {
+    text-align: center;
+
+    margin-bottom: 50px;
+}
+
+
+/* Título "Contáctanos" */
+
+.contact-title h1 {
+    font-size: 48px;
+
+    font-weight: 800;
+
+    letter-spacing: -1px;
+
+    margin-bottom: 12px;
+
+    color: #111;
+}
+
+
+/* ---------------------------------------------------------
+   SUBTÍTULO DE CONTACTO
+   ---------------------------------------------------------
+   Texto:
+   "¿Tienes alguna pregunta?
+    Estamos aquí para ayudarte."
+--------------------------------------------------------- */
+
+.contact-title p {
+    max-width: 700px;
+
+    margin: 0 auto;
+
+    color: #686666;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+
+    font-size: 20px;
+
+    font-weight: 9700;
+
+    letter-spacing: 0.5px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   14. CONTENEDOR PRINCIPAL DE CONTACTO
+   ---------------------------------------------------------
+   Divide la sección en dos columnas:
+   - Información de contacto
+   - Formulario
+========================================================= */
+
+.contact-container {
+    max-width: 1100px;
+
+    margin: 0 auto;
+
+    display: grid;
+
+    grid-template-columns: 0.9fr 1.1fr;
+
+    gap: 35px;
+
+    align-items: stretch;
+}
+
+
+/* =========================================================
+   15. INFORMACIÓN DE CONTACTO
+   ---------------------------------------------------------
+   Tarjeta oscura donde aparecen los datos de contacto.
+========================================================= */
+
+.contact-info {
+    background: #111;
+
+    color: #fff;
+
+    padding: 45px;
+
+    border-radius: 18px;
+
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+
+/* ---------------------------------------------------------
+   DECORACIÓN SUPERIOR
+--------------------------------------------------------- */
+
+.contact-info::before {
+    content: "";
+
+    position: absolute;
+
+    width: 180px;
+    height: 180px;
+
+    border: 1px solid rgba(255, 255, 255, 0.12);
+
+    border-radius: 50%;
+
+    top: -80px;
+    right: -70px;
+}
+
+
+/* ---------------------------------------------------------
+   DECORACIÓN INFERIOR
+--------------------------------------------------------- */
+
+.contact-info::after {
+    content: "";
+
+    position: absolute;
+
+    width: 250px;
+    height: 250px;
+
+    border: 1px solid rgba(255, 255, 255, 0.07);
+
+    border-radius: 50%;
+
+    bottom: -150px;
+    left: -100px;
+}
+
+
+/* Título dentro de la tarjeta */
+
+.contact-info h2 {
+    font-size: 28px;
+
+    margin-bottom: 20px;
+
+    letter-spacing: 1px;
+}
+
+
+/* Descripción dentro de la tarjeta */
+
+.contact-info>p {
+    color: #cfcfcf;
+
+    line-height: 1.7;
+
+    margin-bottom: 40px;
+}
+
+
+/* =========================================================
+   16. DATOS INDIVIDUALES DE CONTACTO
+   ---------------------------------------------------------
+   Cada bloque puede contener:
+   - Teléfono
+   - Correo
+   - Ubicación
+   - WhatsApp
+========================================================= */
+
+.contact-item {
+    padding: 20px 0;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+
+/* El último elemento no tendrá línea inferior */
+
+.contact-item:last-child {
+    border-bottom: none;
+}
+
+
+/* Nombre del dato */
+
+.contact-item strong {
+    display: block;
+
+    font-size: 20px;
+
+    margin-bottom: 8px;
+}
+
+
+/* Información del dato */
+
+.contact-item p {
+    margin: 0;
+
+    color: #bdbdbd;
+
+    font-size: 14px;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   17. BOTÓN DE WHATSAPP DENTRO DE CONTACTO
+   ---------------------------------------------------------
+   Botón verde ubicado dentro de la tarjeta de contacto.
+========================================================= */
+
+.whatsapp-btn {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+
+    margin-top: 15px;
+
+    padding: 13px 20px;
+
+    background: #25D366;
+
+    color: #fff;
+
+    text-decoration: none;
+
+    border-radius: 10px;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    transition: all 0.3s ease;
+}
+
+
+/* Efecto del botón WhatsApp */
+
+.whatsapp-btn:hover {
+    background: #20bd5a;
+
+    transform: translateY(-2px);
+
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
+}
+
+
+/* =========================================================
+   18. ICONO DE WHATSAPP EN EL TÍTULO
+   ---------------------------------------------------------
+   Organiza el icono junto al texto de WhatsApp.
+========================================================= */
+
+.whatsapp-title {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+}
+
+
+/* Tamaño del icono */
+
+.whatsapp-title img {
+    width: 28px;
+    height: 28px;
+}
+
+
+/* =========================================================
+   19. FORMULARIO DE CONTACTO
+   ---------------------------------------------------------
+   Tarjeta blanca que contiene los campos para enviar
+   información.
+========================================================= */
+
+.contact-form {
+    background: #fff;
+
+    padding: 45px;
+
+    border-radius: 18px;
+
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+
+    border: 1px solid #e8e8e8;
+}
+
+
+/* Organización vertical del formulario */
+
+.contact-form form {
+    display: flex;
+
+    flex-direction: column;
+}
+
+
+/* Texto encima de cada campo */
+
+.contact-form label {
+    font-size: 14px;
+
+    font-weight: 700;
+
+    margin-bottom: 8px;
+
+    color: #222;
+}
+
+
+/* ---------------------------------------------------------
+   CAMPOS INPUT Y TEXTAREA
+--------------------------------------------------------- */
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+
+    padding: 15px 16px;
+
+    margin-bottom: 22px;
+
+    border: 1px solid #ddd;
+
+    border-radius: 10px;
+
+    background: #fafafa;
+
+    font-family: inherit;
+
+    font-size: 15px;
+
+    color: #222;
+
+    outline: none;
+
+    transition: 0.3s ease;
+}
+
+
+/* Altura de los campos de texto */
+
+.contact-form input {
+    height: 50px;
+}
+
+
+/* Área para mensajes */
+
+.contact-form textarea {
+    resize: vertical;
+
+    min-height: 140px;
+}
+
+
+/* ---------------------------------------------------------
+   EFECTO CUANDO EL USUARIO SELECCIONA UN CAMPO
+--------------------------------------------------------- */
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: #111;
+
+    background: #fff;
+
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.06);
+}
+
+
+/* =========================================================
+   20. BOTÓN "ENVIAR" DEL FORMULARIO
+========================================================= */
+
+.contact-btn {
+    width: 100%;
+
+    height: 52px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background: #111;
+
+    color: #fff;
+
+    font-size: 15px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: 0.3s ease;
+
+    letter-spacing: 0.5px;
+}
+
+
+/* Efecto al pasar el mouse */
+
+.contact-btn:hover {
+    background: #333;
+
+    transform: translateY(-2px);
+
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+}
+
+
+/* Efecto mientras se presiona */
+
+.contact-btn:active {
+    transform: translateY(0);
+}
+
+
+/* =========================================================
+   21. WHATSAPP FLOTANTE
+   ---------------------------------------------------------
+   Botón circular que permanece fijo en la esquina inferior
+   derecha de la pantalla.
+========================================================= */
+
+.whatsapp-float {
+    position: fixed !important;
+
+    right: 20px !important;
+    bottom: 20px !important;
+
+    width: 60px !important;
+    height: 60px !important;
+
+    background: #25D366 !important;
+
+    border-radius: 50% !important;
+
+    display: flex !important;
+
+    align-items: center;
+    justify-content: center;
+
+    z-index: 99999 !important;
+
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+}
+
+
+/* Icono dentro del botón flotante */
+
+.whatsapp-float img {
+    width: 40px !important;
+    height: 40px !important;
+
+    display: block !important;
+}
+
+
+/* =========================================================
+   22. FOOTER / PIE DE PÁGINA
+========================================================= */
+
+.footer {
+    background: #111;
+
+    color: #aaa;
+
+    text-align: center;
+
+    padding: 25px 20px;
+}
+
+
+/* Texto del footer */
+
+.footer p {
+    margin: 0;
+
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   23. RESPONSIVE - TABLET
+   ---------------------------------------------------------
+   Cuando la pantalla tiene 850px o menos, las dos
+   columnas de contacto pasan a una sola columna.
+========================================================= */
+
+@media (max-width: 850px) {
+
+    .contact-container {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-info,
+    .contact-form {
+        padding: 35px;
+    }
+}
+
+
+/* =========================================================
+   24. RESPONSIVE - CELULAR
+   ---------------------------------------------------------
+   Cuando la pantalla tiene 768px o menos:
+   - Se oculta el menú de escritorio.
+   - Aparece el botón de tres rayas.
+   - Se reduce el logo.
+========================================================= */
+
+@media (max-width: 768px) {
+
+    /* Ocultar menú de escritorio */
+
+    .navbar {
+        display: none !important;
+    }
+
+
+    /* Reducir tamaño del logo */
+
+    .logo img {
+        width: 85px;
+        height: 85px;
+    }
+
+
+    /* Mostrar botón de tres rayas */
+
+    .menu-btn {
+        display: block;
+    }
+
+
+    /* Separación entre carrito y menú */
+
+    .header-actions {
+        gap: 15px;
+    }
+}
+
+
+/* =========================================================
+   25. RESPONSIVE - CELULARES PEQUEÑOS
+   ---------------------------------------------------------
+   Ajustes especiales para pantallas de 550px o menos.
+========================================================= */
+
+@media (max-width: 550px) {
+
+    /* Espacio superior e inferior de la página */
+
+    .page-section {
+        padding: 120px 15px 60px;
+    }
+
+
+    /* Reducir título de contacto */
+
+    .contact-title h1 {
+        font-size: 36px;
+    }
+
+
+    /* Reducir texto de presentación */
+
+    .contact-title p {
+        font-size: 15px;
+    }
+
+
+    /* Reducir espacio interno de las tarjetas */
+
+    .contact-info,
+    .contact-form {
+        padding: 28px 22px;
+
+        border-radius: 14px;
+    }
+
+
+    /* Reducir título de información */
+
+    .contact-info h2 {
+        font-size: 24px;
+    }
+
+
+    /* WhatsApp ocupa todo el ancho */
+
+    .whatsapp-btn {
+        width: 100%;
+    }
+}
+
+/* =========================================================
+   13. PÁGINA NOSOTROS
+   ---------------------------------------------------------
+   Diseño exclusivo para BOXER'S HOUSE.
+
+   COLORES PRINCIPALES:
+   - Negro  → #080808
+   - Blanco → #FFFFFF
+   - Rojo   → #E00000
+   - Morado → #7B00FF
+
+   ESTILO:
+   Urbano + moderno + juvenil + elegante
+========================================================= */
+
+
+/* =========================================================
+   13.1 HERO DE NOSOTROS
+   ---------------------------------------------------------
+   Primera sección de la página.
+
+   Presenta:
+   - "DESDE ADENTRO"
+   - BOXER'S HOUSE
+   - Frase principal
+   - Número decorativo
+========================================================= */
+
+.about-hero {
+    position: relative;
+
+    min-height: 650px;
+
+    display: flex;
+    align-items: center;
+
+    background:
+        radial-gradient(circle at 80% 30%,
+            #7b00ff4d,
+            transparent 30%),
+        radial-gradient(circle at 15% 80%,
+            rgba(224, 0, 0, 0.22),
+            transparent 30%),
+        #080808;
+
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   13.2 CONTENIDO DEL HERO
+   ---------------------------------------------------------
+   Organiza el texto y el número decorativo.
+========================================================= */
+
+.about-hero-content {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    width: 100%;
+}
+
+
+/* =========================================================
+   13.3 ETIQUETA SUPERIOR
+   ---------------------------------------------------------
+   Controla el texto:
+
+   "DESDE ADENTRO"
+
+   Sirve como pequeño identificador de la sección.
+========================================================= */
+
+.about-tag {
+    display: inline-block;
+
+    padding: 8px 16px;
+
+    margin-bottom: 25px;
+
+    border: 1px solid #735a8b;
+
+    border-radius: 30px;
+
+    color: #ffffff;
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+    letter-spacing: 3px;
+
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   13.4 TÍTULO PRINCIPAL
+   ---------------------------------------------------------
+   Controla:
+
+   SOMOS
+   BOXER HOUSE
+
+   El tamaño grande genera impacto visual.
+========================================================= */
+
+.about-hero h1 {
+    margin: 0;
+
+    font-size: clamp(55px, 8vw, 105px);
+
+    line-height: 0.9;
+
+    font-weight: 900;
+
+    letter-spacing: -3px;
+
+    color: #ffffff;
+}
+
+
+/* =========================================================
+   13.5 NOMBRE DE LA MARCA EN ROJO
+   ---------------------------------------------------------
+   Destaca BOXER'S HOUSE utilizando el color
+   principal de la identidad visual.
+========================================================= */
+
+.about-hero h1 span {
+    color: #e00000;
+}
+
+
+/* =========================================================
+   13.6 DESCRIPCIÓN DEL HERO
+   ---------------------------------------------------------
+   Controla la frase que aparece debajo del título.
+========================================================= */
+
+.about-hero p {
+    max-width: 600px;
+
+    margin-top: 35px;
+
+    font-size: 19px;
+
+    line-height: 1.7;
+
+    color: #d1cccd;
+}
+
+
+/* =========================================================
+   13.7 NÚMERO DECORATIVO
+   ---------------------------------------------------------
+   Número grande utilizado como elemento visual.
+
+   Le da un aspecto más editorial y moderno
+   a la página.
+========================================================= */
+
+.about-hero-number {
+    font-size: clamp(150px, 20vw, 300px);
+
+    font-weight: 900;
+
+    line-height: 1;
+
+    color: transparent;
+
+    -webkit-text-stroke: 2px rgba(255, 255, 255, 0.12);
+
+    user-select: none;
+}
+
+
+/* =========================================================
+   13.8 SECCIÓN HISTORIA
+   ---------------------------------------------------------
+   Presenta la historia y filosofía de BOXER'S HOUSE.
+
+   Utiliza fondo blanco para crear contraste
+   con el Hero oscuro.
+========================================================= */
+
+.about-story {
+    padding: 120px 0;
+
+    background: #ffffff;
+}
+
+
+/* =========================================================
+   13.9 GRID DE HISTORIA
+   ---------------------------------------------------------
+   Divide la sección en:
+
+   IZQUIERDA → Número
+   DERECHA   → Información
+========================================================= */
+
+.about-story-grid {
+    display: grid;
+
+    grid-template-columns: 0.3fr 1.7fr;
+
+    gap: 70px;
+
+    align-items: start;
+}
+
+
+/* =========================================================
+   13.10 NÚMERO DE SECCIÓN
+   ---------------------------------------------------------
+   Número decorativo "02".
+========================================================= */
+
+.section-number {
+    font-weight: 900;
+    font-size: 100px !important;
+    line-height: 1;
+    color: #e00000;
+    opacity: 0.9;
+}
+
+
+/* =========================================================
+   13.11 ETIQUETA DE SECCIÓN
+   ---------------------------------------------------------
+   Texto pequeño:
+
+   "NUESTRA HISTORIA"
+========================================================= */
+
+.section-label {
+    display: block;
+
+    margin-bottom: 20px;
+
+    color: #111111;
+
+    font-size: 13px;
+
+    font-weight: 900;
+
+    letter-spacing: 4px;
+
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   13.12 TÍTULO DE HISTORIA
+   ---------------------------------------------------------
+   Controla:
+
+   UNA MARCA
+   CON ACTITUD
+========================================================= */
+
+.about-story h2 {
+    margin: 0 0 35px;
+
+    font-size: clamp(40px, 6vw, 70px);
+
+    line-height: 0.95;
+
+    font-weight: 900;
+
+    letter-spacing: -2px;
+
+    color: #080808;
+}
+
+
+/* =========================================================
+   13.13 PALABRA DESTACADA
+   ---------------------------------------------------------
+   "CON ACTITUD" utiliza rojo para destacar
+   la personalidad de la marca.
+========================================================= */
+
+.about-story h2 strong {
+    color: #e00000;
+}
+
+
+/* =========================================================
+   13.14 PÁRRAFOS DE HISTORIA
+   ---------------------------------------------------------
+   Controla el texto de presentación de la marca.
+========================================================= */
+
+.about-story-content p {
+    max-width: 700px;
+    font-family: 'Montserrat Regular', sans-serif;
+
+    margin-bottom: 22px;
+
+    font-size: 17px;
+
+    line-height: 1.8;
+
+    color: #555;
+}
+
+
+/* =========================================================
+   13.15 SECCIÓN MISIÓN Y VISIÓN
+   ---------------------------------------------------------
+   Presenta los objetivos principales
+   de BOXER'S HOUSE.
+========================================================= */
+
+.mission-section {
+    padding: 120px 0;
+
+    background: #080808;
+}
+
+
+/* =========================================================
+   13.16 ENCABEZADOS DE SECCIÓN
+   ---------------------------------------------------------
+   Contiene:
+
+   NUESTRA ESENCIA
+   LO QUE NOS MUEVE
+========================================================= */
+
+.section-heading {
+    margin-bottom: 60px;
+}
+
+
+.section-heading span {
+    color: #e00000;
+
+    font-size: 13px;
+
+    font-weight: 900;
+
+    letter-spacing: 4px;
+
+    text-transform: uppercase;
+}
+
+
+.section-heading h2 {
+    margin: 15px 0 0;
+
+    font-size: clamp(40px, 6vw, 65px);
+
+    font-weight: 900;
+
+    letter-spacing: -2px;
+
+    color: #ffffff;
+}
+
+
+/* =========================================================
+   13.17 GRID MISIÓN Y VISIÓN
+   ---------------------------------------------------------
+   Organiza las dos tarjetas en columnas.
+========================================================= */
+
+.mission-grid {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 25px;
+}
+
+
+/* =========================================================
+   13.18 TARJETAS MISIÓN Y VISIÓN
+   ---------------------------------------------------------
+   Base de las tarjetas.
+========================================================= */
+
+.mission-card {
+    position: relative;
+
+    min-height: 330px;
+
+    padding: 45px;
+
+    overflow: hidden;
+
+    border-radius: 20px;
+
+    transition: 0.4s ease;
+}
+
+
+/* =========================================================
+   13.19 TARJETA ROJA
+   ---------------------------------------------------------
+   Utilizada para la MISIÓN.
+========================================================= */
+
+.mission-red {
+    background:
+        linear-gradient(135deg,
+            #e00000,
+            #9c0000);
+}
+
+
+/* =========================================================
+   13.20 TARJETA MORADA
+   ---------------------------------------------------------
+   Utilizada para la VISIÓN.
+========================================================= */
+
+.mission-purple {
+    background:
+        linear-gradient(135deg,
+            #a8a8a7,
+            #3d3c3d);
+}
+
+
+/* =========================================================
+   13.21 NÚMERO DE MISIÓN / VISIÓN
+   ---------------------------------------------------------
+   Número decorativo ubicado en la esquina.
+========================================================= */
+
+.mission-number {
+    position: absolute;
+
+    top: 20px;
+
+    right: 30px;
+
+    font-size: 90px;
+
+    font-weight: 900;
+
+    color: rgba(0, 0, 0, 0.795);
+
+    line-height: 1;
+}
+
+
+/* =========================================================
+   13.22 TÍTULO MISIÓN / VISIÓN
+   ---------------------------------------------------------
+   Controla los títulos de las tarjetas.
+========================================================= */
+
+.mission-card h3 {
+    position: relative;
+
+    margin: 100px 0 20px;
+
+    font-size: 35px;
+
+    font-weight: 900;
+
+    letter-spacing: 2px;
+
+    color: #ffffff;
+}
+
+
+/* =========================================================
+   13.23 TEXTO MISIÓN / VISIÓN
+   ---------------------------------------------------------
+   Descripción de cada tarjeta.
+========================================================= */
+
+.mission-card p {
+    position: relative;
+
+    max-width: 500px;
+
+    margin: 0;
+
+    font-size: 16px;
+
+    line-height: 1.8;
+
+    color: rgba(255, 255, 255, 0.85);
+}
+
+
+/* =========================================================
+   13.24 EFECTO HOVER
+   ---------------------------------------------------------
+   Eleva ligeramente las tarjetas cuando
+   el usuario pasa el mouse.
+========================================================= */
+
+.mission-card:hover {
+    transform: translateY(-10px);
+
+    box-shadow:
+        0 25px 50px rgba(0, 0, 0, 0.35);
+}
+
+
+/* =========================================================
+   13.25 SECCIÓN DE VALORES
+   ---------------------------------------------------------
+   Presenta los tres valores principales
+   de BOXER'S HOUSE.
+========================================================= */
+
+.values-section {
+    padding: 120px 0;
+
+    background: #f4f4f4;
+}
+
+
+/* =========================================================
+   13.26 ENCABEZADO DE VALORES
+========================================================= */
+
+.values-heading span {
+    color: #F5F2EB;
+}
+
+
+/* =========================================================
+   13.27 TÍTULO DE VALORES
+========================================================= */
+
+.values-heading h2 {
+    color: #080808;
+}
+
+
+/* =========================================================
+   13.28 GRID DE VALORES
+   ---------------------------------------------------------
+   Organiza:
+
+   CALIDAD
+   COMODIDAD
+   ESTILO
+========================================================= */
+
+.values-grid {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 20px;
+}
+
+
+/* =========================================================
+   13.29 TARJETAS DE VALORES
+   ---------------------------------------------------------
+   Diseño moderno y minimalista para cada valor.
+========================================================= */
+
+.modern-value {
+    position: relative;
+
+    min-height: 260px;
+
+    padding: 35px;
+
+    background: #ffffff;
+
+    border: 1px solid #dddddd;
+
+    border-radius: 18px;
+
+    overflow: hidden;
+
+    transition: 0.4s ease;
+}
+
+
+/* =========================================================
+   13.30 NÚMEROS DE LOS VALORES
+   ---------------------------------------------------------
+   Muestra:
+
+   01
+   02
+   03
+========================================================= */
+
+.value-number {
+    display: block;
+
+    margin-bottom: 55px;
+
+    font-size: 70px;
+
+    font-weight: 900;
+
+    line-height: 1;
+
+    color: #e00000;
+
+    opacity: 0.9;
+}
+
+
+/* =========================================================
+   13.31 TÍTULOS DE LOS VALORES
+========================================================= */
+
+.modern-value h3 {
+    margin: 0 0 12px;
+
+    font-size: 24px;
+
+    font-weight: 900;
+
+    letter-spacing: 1px;
+
+    color: #080808;
+}
+
+
+/* =========================================================
+   13.32 TEXTO DE LOS VALORES
+========================================================= */
+
+.modern-value p {
+    margin: 0;
+
+    font-size: 15px;
+
+    line-height: 1.7;
+
+    color: #666;
+}
+
+
+/* =========================================================
+   13.33 BARRA DE COLOR
+   ---------------------------------------------------------
+   Agrega una barra inferior que utiliza rojo
+   y morado como identidad visual.
+========================================================= */
+
+.modern-value::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    bottom: 0;
+
+    width: 100%;
+
+    height: 5px;
+
+    background: linear-gradient(90deg,
+            #e00000,
+            #F5F2EB);
+}
+
+
+/* =========================================================
+   13.34 HOVER DE VALORES
+========================================================= */
+
+.modern-value:hover {
+    transform: translateY(-10px);
+
+    border-color: #F5F2EB;
+
+    box-shadow:
+        0 20px 40px rgba(0, 0, 0, 0.12);
+}
+
+
+/* =========================================================
+   13.35 SECCIÓN FINAL
+   ---------------------------------------------------------
+   Cierre visual de la página.
+
+   Contiene:
+
+   BOXER'S HOUSE
+
+   TU ESTILO
+   EMPIEZA DESDE ADENTRO.
+========================================================= */
+
+.about-final {
+    position: relative;
+
+    padding: 150px 0;
+
+    text-align: center;
+
+    background:
+        radial-gradient(circle at center,
+            rgba(123, 0, 255, 0.25),
+            transparent 35%),
+        #080808;
+
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   13.36 NOMBRE FINAL DE LA MARCA
+========================================================= */
+
+.about-final span {
+    color: #e00000;
+
+    font-size: 14px;
+
+    font-weight: 900;
+
+    letter-spacing: 5px;
+
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   13.37 FRASE FINAL
+========================================================= */
+
+.about-final h2 {
+    max-width: 900px;
+
+    margin: 25px auto 40px;
+
+    font-size: clamp(42px, 7vw, 80px);
+
+    line-height: 0.95;
+
+    font-weight: 900;
+
+    letter-spacing: -2px;
+
+    color: #ffffff;
+}
+
+
+/* =========================================================
+   13.38 BOTÓN FINAL
+   ---------------------------------------------------------
+   Lleva al usuario hacia la página de productos.
+========================================================= */
+
+.about-final a {
+    display: inline-block;
+
+    padding: 16px 35px;
+
+    background: #e00000;
+
+    color: #ffffff;
+
+    text-decoration: none;
+
+    font-size: 13px;
+
+    font-weight: 900;
+
+    letter-spacing: 2px;
+
+    text-transform: uppercase;
+
+    border-radius: 5px;
+
+    transition: 0.3s ease;
+}
+
+/* =========================================================
+   13.38.1 plabra al final de la pagina
+   ---------------------------------------------------------
+  © 2026 BOXER HOUSE. Todos los derechos reservados.
+========================================================= */
+.footer {
+    width: 100%;
+    padding: 30px 20px;
+    background: #080808;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    /* Centra horizontalmente */
+    align-items: center;
+}
+
+.footer p {
+    margin: 0;
+    text-align: center;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   13.39 HOVER DEL BOTÓN
+========================================================= */
+
+.about-final a:hover {
+    background: #F5F2EB;
+
+    transform: translateY(-3px);
+}
+
+
+/* =========================================================
+   13.40 RESPONSIVE — TABLET
+   ---------------------------------------------------------
+   Ajusta las columnas para tablets.
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .about-hero-number {
+        display: none;
+    }
+
+
+    .about-story-grid {
+        grid-template-columns: 1fr;
+
+        gap: 30px;
+    }
+
+
+    .section-number {
+        font-size: 70px;
+    }
+
+
+    .mission-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .values-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+/* =========================================================
+   13.41 RESPONSIVE — CELULAR
+   ---------------------------------------------------------
+   Ajusta tamaños y espacios para teléfonos.
+========================================================= */
+
+@media (max-width: 768px) {
+
+    .about-hero {
+        min-height: 600px;
+
+        padding: 100px 20px 70px;
+    }
+
+
+    .about-hero h1 {
+        font-size: 52px;
+
+        letter-spacing: -2px;
+    }
+
+
+    .about-hero p {
+        font-size: 16px;
+    }
+
+
+    .about-story {
+        padding: 80px 20px;
+    }
+
+
+    .about-story h2 {
+        font-size: 43px;
+    }
+
+
+    .mission-section {
+        padding: 80px 20px;
+    }
+
+
+    .mission-card {
+        min-height: 300px;
+
+        padding: 30px;
+    }
+
+
+    .values-section {
+        padding: 80px 20px;
+    }
+
+
+    .modern-value {
+        min-height: 230px;
+    }
+
+
+    .about-final {
+        padding: 100px 20px;
+    }
+
+
+    .about-final h2 {
+        font-size: 45px;
+    }
+
+}
+
+
+/* =========================================================
+   13.42 CELULARES PEQUEÑOS
+   ---------------------------------------------------------
+   Últimos ajustes para pantallas muy pequeñas.
+========================================================= */
+
+@media (max-width: 480px) {
+
+    .about-hero h1 {
+        font-size: 43px;
+    }
+
+
+    .about-tag {
+        font-size: 10px;
+
+        letter-spacing: 2px;
+    }
+
+
+    .about-story h2 {
+        font-size: 36px;
+    }
+
+
+    .section-heading h2 {
+        font-size: 38px;
+    }
+
+
+    .mission-card h3 {
+        font-size: 29px;
+    }
+
+
+    .about-final h2 {
+        font-size: 37px;
+    }
+
+}
+
+
+/* =========================================================
+   14.1 MARCAS — PORTADA
+
+   Hero principal de la página de marcas
+========================================================= */
+
+.brands-hero {
+
+    position: relative;
+
+    min-height: 620px;
+
+    width: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    overflow: hidden;
+
+    background:
+
+        radial-gradient(circle at 75% 40%, rgba(224, 0, 0, 0.12), transparent 35%),
+
+        linear-gradient(135deg, #050505 0%, #111111 55%, #050505 100%);
+
+    color: #ffffff;
+
+}
+
+
+/* =========================================================
+   14.2 EFECTO DECORATIVO DEL HERO
+========================================================= */
+
+.brands-hero::before {
+
+    content: "BH";
+
+    position: absolute;
+
+    right: 4%;
+
+    bottom: -80px;
+
+    font-size: 330px;
+
+    font-weight: 800;
+
+    line-height: 1;
+
+    color: rgba(255, 255, 255, 0.025);
+
+    pointer-events: none;
+
+}
+
+
+/* =========================================================
+   14.3 OVERLAY DEL HERO
+========================================================= */
+
+.hero-overlay {
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+
+        radial-gradient(circle at center,
+
+            rgba(255, 255, 255, 0.06),
+
+            transparent 55%);
+
+    pointer-events: none;
+
+}
+
+
+/* =========================================================
+   14.4 CONTENIDO DEL HERO
+========================================================= */
+
+.brands-hero-content {
+
+    position: relative;
+
+    z-index: 2;
+
+    width: min(900px, 90%);
+
+    text-align: center;
+
+    padding: 60px 20px;
+
+}
+
+
+/* =========================================================
+   14.5 PEQUEÑO TÍTULO
+========================================================= */
+
+.small-title {
+
+    display: inline-block;
+
+    margin-bottom: 25px;
+
+    color: #E00000;
+
+    font-size: 13px;
+
+    font-weight: 800;
+
+    letter-spacing: 5px;
+
+}
+
+
+/* =========================================================
+   14.6 TÍTULO PRINCIPAL
+========================================================= */
+
+.brands-hero h1 {
+
+    margin: 0;
+
+    font-size: clamp(48px, 7vw, 90px);
+
+    font-weight: 800;
+
+    line-height: 0.95;
+
+    letter-spacing: -3px;
+
+    text-transform: uppercase;
+
+}
+
+
+/* =========================================================
+   14.7 PARTE ROJA DEL TÍTULO
+========================================================= */
+
+.brands-hero h1 span {
+
+    display: block;
+
+    color: #E00000;
+
+}
+
+
+/* =========================================================
+   14.8 TEXTO DEL HERO
+========================================================= */
+
+.brands-hero p {
+
+    max-width: 650px;
+
+    margin: 30px auto 35px;
+
+    color: #cfcfcf;
+
+    font-size: 16px;
+
+    line-height: 1.8;
+
+}
+
+
+/* =========================================================
+   14.9 BOTÓN DEL HERO
+========================================================= */
+
+.hero-btn {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    min-width: 210px;
+
+    padding: 16px 30px;
+
+    background: #ff0000;
+
+    color: #ffffff;
+
+    text-decoration: none;
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+    letter-spacing: 2px;
+
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease,
+        box-shadow 0.3s ease;
+
+}
+
+
+/* =========================================================
+   14.10 HOVER DEL BOTÓN
+========================================================= */
+
+.hero-btn:hover {
+
+    transform: translateY(-4px);
+
+    background: #ffffff;
+
+    color: #080808;
+
+    box-shadow: 0 12px 30px rgba(224, 0, 0, 0.25);
+
+}
+
+
+/* =========================================================
+   14.11 INTRODUCCIÓN DE MARCAS
+========================================================= */
+
+.brands-intro {
+
+    width: 100%;
+
+    padding: 120px 8% 80px;
+
+    background: #ffffff;
+
+    text-align: center;
+
+}
+
+
+/* =========================================================
+   14.12 NÚMERO DE SECCIÓN
+========================================================= */
+
+.section-number {
+
+    display: block;
+
+    margin-bottom: 25px;
+
+    color: #0e0e0e;
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+    letter-spacing: 4px;
+
+}
+
+
+/* =========================================================
+   14.13 TÍTULO DE INTRODUCCIÓN
+========================================================= */
+
+.brands-intro h2 {
+
+    margin: 0;
+
+    font-size: clamp(38px, 5vw, 65px);
+
+    line-height: 1;
+
+    font-weight: 800;
+
+    letter-spacing: -2px;
+
+    color: #080808;
+
+}
+
+
+/* =========================================================
+   14.14 PALABRA ROJA
+========================================================= */
+
+.brands-intro h2 span {
+
+    color: #d80202;
+
+}
+
+
+/* =========================================================
+   14.15 TEXTO DE INTRODUCCIÓN
+========================================================= */
+
+.brands-intro p {
+
+    max-width: 720px;
+
+    margin: 30px auto 0;
+
+    color: #666666;
+
+    font-size: 16px;
+
+    line-height: 1.8;
+
+}
+
+
+/* =========================================================
+   14.16 CONTENEDOR DE MARCAS
+========================================================= */
+
+.brands-grid {
+
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 35px;
+
+    padding: 30px 6% 120px;
+
+    background: #ffffff;
+
+}
+
+
+/* =========================================================
+   14.17 TARJETA DE MARCA
+========================================================= */
+
+.brand-card {
+    position: relative;
+    overflow: hidden;
+    background: #080808;
+
+    transition:
+        transform 0.4s ease,
+        box-shadow 0.4s ease;
+}
+
+.brand-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    /* Mover la imagen hacia abajo */
+    object-position: center 5%;
+
+}
+
+/* =========================================================
+   14.18 EFECTO HOVER TARJETA
+========================================================= */
+
+.brand-card:hover {
+
+    transform: translateY(-10px);
+
+    box-shadow:
+
+        0 25px 60px rgba(0, 0, 0, 0.18);
+
+}
+
+
+/* =========================================================
+   14.19 CONTENEDOR DE IMAGEN
+========================================================= */
+
+.brand-image {
+    margin-top: 0%;
+    position: relative;
+
+    width: 100%;
+
+    height: 500px;
+
+    overflow: auto hidden;
+
+    background: #181818;
+
+}
+
+
+/* =========================================================
+   14.20 PLACEHOLDER DE IMAGEN
+========================================================= */
+
+.image-placeholder {
+
+    width: 100%;
+
+    height: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    background:
+
+        linear-gradient(135deg,
+
+            #111111 0%,
+
+            #222222 50%,
+
+            #0b0b0b 100%);
+
+    color: #ffffff;
+
+    transition: transform 0.6s ease;
+
+}
+
+
+/* =========================================================
+   14.21 EFECTO PLACEHOLDER
+========================================================= */
+
+.brand-card:hover .image-placeholder {
+
+    transform: scale(1.04);
+
+}
+
+
+/* =========================================================
+   14.22 TEXTO "IMAGEN"
+========================================================= */
+
+.image-placeholder span {
+
+    margin-bottom: 15px;
+
+    color: #E00000;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: 5px;
+
+}
+
+
+/* =========================================================
+   14.23 NOMBRE DE LA MARCA EN PLACEHOLDER
+========================================================= */
+
+.image-placeholder strong {
+
+    font-size: clamp(28px, 4vw, 48px);
+
+    font-weight: 800;
+
+    letter-spacing: -1px;
+
+}
+
+
+/* =========================================================
+   14.24 TEXTO SECUNDARIO PLACEHOLDER
+========================================================= */
+
+.image-placeholder small {
+
+    margin-top: 15px;
+
+    color: #888888;
+
+    font-size: 12px;
+
+    letter-spacing: 1px;
+
+}
+
+
+/* =========================================================
+   14.25 IMÁGENES REALES
+========================================================= */
+
+.brand-image img {
+
+
+    width: 100%;
+
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+    transition: transform 0.7s ease;
+
+}
+
+
+/* =========================================================
+   14.26 ZOOM DE IMAGEN
+========================================================= */
+
+.brand-card:hover .brand-image img {
+
+    transform: scale(1.05);
+
+}
+
+
+/* =========================================================
+   14.27 NÚMERO DE MARCA
+========================================================= */
+
+.brand-number {
+
+    position: absolute;
+
+    top: 25px;
+
+    right: 25px;
+
+    width: 50px;
+
+    height: 50px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: #E00000;
+
+    color: #ffffff;
+
+    font-size: 13px;
+
+    font-weight: 800;
+
+    z-index: 3;
+
+}
+
+
+/* =========================================================
+   14.28 INFORMACIÓN DE LA MARCA
+========================================================= */
+
+/* =========================================================
+   INFORMACIÓN DE LA MARCA
+========================================================= */
+
+.brand-info {
+
+    padding: 40px 40px 45px;
+
+    background: #080808;
+
+    color: #ffffff;
+
+    text-align: center;
+
+}
+
+
+/* ETIQUETA */
+
+.brand-label {
+
+    display: block;
+
+    color: #e00000;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: 3px;
+
+    margin-bottom: 18px;
+
+    text-align: center;
+
+}
+
+
+/* NOMBRE DE LA MARCA */
+
+.brand-info h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 48px;
+    font-weight: 100;
+    letter-spacing: 2px;
+    text-align: center;
+}
+
+
+/* LÍNEA ROJA */
+
+.brand-info h3::after {
+
+    content: "";
+
+    display: block;
+
+    width: 70px;
+
+    height: 3px;
+
+    background: #e00000;
+
+    margin: 20px auto 25px;
+
+}
+
+
+/* DESCRIPCIÓN */
+
+.brand-info p {
+
+    max-width: 600px;
+
+    margin: 0 auto 30px;
+
+    color: #d0d0d0;
+
+    font-size: 16px;
+
+    line-height: 1.7;
+
+    text-align: center;
+
+}
+
+
+/* BOTÓN */
+
+.brand-btn {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 15px;
+
+    padding: 15px 35px;
+
+    background: #e00000;
+
+    color: #ffffff;
+
+    text-decoration: none;
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+    letter-spacing: 1.5px;
+
+    transition:
+        background 0.3s ease,
+        transform 0.3s ease;
+
+}
+
+
+.brand-btn:hover {
+
+    background: #ffffff;
+
+    color: #080808;
+
+    transform: translateY(-3px);
+
+}
+
+
+
+/* =========================================================
+   14.29 ETIQUETA DE MARCA
+========================================================= */
+
+.brand-label {
+
+    display: block;
+
+    margin-bottom: 15px;
+
+    color: #E00000;
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    letter-spacing: 3px;
+
+}
+
+
+/* =========================================================
+   14.30 NOMBRE DE MARCA
+========================================================= */
+
+.brand-info h3 {
+
+    margin: 0 0 18px;
+
+    font-size: 34px;
+
+    font-weight: 800;
+
+    letter-spacing: -1px;
+
+}
+
+
+/* =========================================================
+   14.31 DESCRIPCIÓN DE MARCA
+========================================================= */
+
+.brand-info p {
+
+    max-width: 600px;
+
+    margin: 0 0 30px;
+
+    color: #a9a9a9;
+
+    font-size: 14px;
+
+    line-height: 1.8;
+
+}
+
+
+/* =========================================================
+   14.32 BOTÓN DE MARCA
+========================================================= */
+
+.brand-btn {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    padding-bottom: 8px;
+
+    border-bottom: 1px solid #E00000;
+
+    color: #ffffff;
+
+    text-decoration: none;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: 2px;
+
+    transition:
+
+        color 0.3s ease,
+
+        gap 0.3s ease;
+
+}
+
+
+/* =========================================================
+   14.33 FLECHA DEL BOTÓN
+========================================================= */
+
+.brand-btn span {
+
+    color: #E00000;
+
+    font-size: 20px;
+
+    line-height: 10px;
+
+    transition: transform 0.3s ease;
+
+}
+
+
+/* =========================================================
+   14.34 HOVER BOTÓN MARCA
+========================================================= */
+
+.brand-btn:hover {
+
+    color: #E00000;
+
+    gap: 22px;
+
+}
+
+
+.brand-btn:hover span {
+
+    transform: translateX(5px);
+
+}
+
+
+/* =========================================================
+   14.35 FRASE FINAL
+========================================================= */
+
+.brands-quote {
+
+    position: relative;
+
+    width: 100%;
+
+    padding: 130px 20px;
+
+    background: #080808;
+
+    text-align: center;
+
+    color: #ffffff;
+
+    overflow: hidden;
+
+}
+
+
+/* =========================================================
+   14.36 LÍNEA DECORATIVA
+========================================================= */
+
+.quote-line {
+
+    width: 60px;
+
+    height: 3px;
+
+    margin: 0 auto 35px;
+
+    background: #E00000;
+
+}
+
+
+/* =========================================================
+   14.37 TÍTULO FINAL
+========================================================= */
+
+.brands-quote h2 {
+
+    margin: 0;
+
+    font-size: clamp(40px, 6vw, 75px);
+
+    font-weight: 800;
+
+    line-height: 1;
+
+    letter-spacing: -2px;
+
+}
+
+
+/* =========================================================
+   14.38 PARTE ROJA FRASE FINAL
+========================================================= */
+
+.brands-quote h2 span {
+
+    color: #E00000;
+
+}
+
+
+/* =========================================================
+   14.39 TEXTO FINAL
+========================================================= */
+
+.brands-quote p {
+
+    margin-top: 35px;
+
+    color: #777777;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    letter-spacing: 5px;
+
+}
+
+
+/* =========================================================
+   14.40 RESPONSIVE — TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .brands-grid {
+
+        grid-template-columns: 1fr;
+
+        padding-left: 7%;
+
+        padding-right: 7%;
+
+    }
+
+    .brand-image {
+
+        height: 480px;
+
+    }
+
+}
+
+
+/* =========================================================
+   14.41 RESPONSIVE — CELULARES
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .brands-hero {
+
+        min-height: 560px;
+
+    }
+
+
+    .brands-hero h1 {
+
+        font-size: 45px;
+
+        letter-spacing: -2px;
+
+    }
+
+
+    .brands-hero p {
+
+        font-size: 14px;
+
+        line-height: 1.7;
+
+    }
+
+
+    .brands-intro {
+
+        padding: 80px 25px 60px;
+
+    }
+
+
+    .brands-intro h2 {
+
+        font-size: 40px;
+
+    }
+
+
+    .brands-grid {
+
+        padding: 20px 20px 80px;
+
+        gap: 25px;
+
+    }
+
+
+    .brand-image {
+
+        height: 380px;
+
+    }
+
+
+    .brand-info {
+
+        padding: 30px 25px 35px;
+
+    }
+
+
+    .brand-info h3 {
+
+        font-size: 28px;
+
+    }
+
+
+    .brands-quote {
+
+        padding: 90px 20px;
+
+    }
+
+
+    .brands-quote h2 {
+
+        font-size: 42px;
+
+    }
+
+}
+
+
+/* =========================================================
+   14.42 CELULARES PEQUEÑOS
+========================================================= */
+
+@media (max-width: 400px) {
+
+    .brands-hero h1 {
+
+        font-size: 37px;
+
+    }
+
+
+    .small-title {
+
+        font-size: 10px;
+
+        letter-spacing: 3px;
+
+    }
+
+
+    .brand-image {
+
+        height: 320px;
+
+    }
+
+
+    .image-placeholder strong {
+
+        font-size: 25px;
+
+    }
+
+
+    .brands-quote h2 {
+
+        font-size: 34px;
+
+    }
+
+}
+
+/* CORRECCIÓN PARA CELULAR */
+
+html,
+body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+img {
+    max-width: 100%;
+}
+
+/* =========================================================
+   15. PÁGINA DE PRODUCTOS
+   ---------------------------------------------------------
+   Diseño completo del catálogo de BOXER HOUSE.
+
+   ESTILO:
+   - Urbano
+   - Moderno
+   - Minimalista
+   - Negro + blanco + rojo
+
+   Incluye:
+   - Hero de productos
+   - Catálogo
+   - Tarjetas de productos
+   - Tallas
+   - Precios
+   - Botones
+   - Sección final
+========================================================= */
+
+
+/* =========================================================
+   15.1 HERO DE PRODUCTOS
+   ---------------------------------------------------------
+   Primera sección de la página de productos.
+========================================================= */
+
+.products-hero {
+
+    min-height: 600px;
+
+    padding: 150px 30px 100px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    background:
+
+        radial-gradient(circle at 80% 30%,
+            rgba(224, 0, 0, 0.18),
+            transparent 30%),
+
+        radial-gradient(circle at 15% 80%,
+            rgba(123, 0, 255, 0.12),
+            transparent 30%),
+
+        #080808;
+
+    overflow: hidden;
+
+}
+
+
+/* =========================================================
+   15.2 CONTENIDO DEL HERO
+========================================================= */
+
+.products-hero-content {
+
+    max-width: 850px;
+
+    position: relative;
+
+    z-index: 2;
+
+}
+
+
+/* =========================================================
+   15.3 ETIQUETA SUPERIOR
+========================================================= */
+
+.products-tag {
+
+    display: inline-block;
+
+    margin-bottom: 25px;
+
+    padding: 8px 18px;
+
+    border: 1px solid #555;
+
+    border-radius: 30px;
+
+    color: #ffffff;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: 4px;
+
+}
+
+
+/* =========================================================
+   15.4 TÍTULO PRINCIPAL
+========================================================= */
+
+.products-hero h1 {
+
+    margin: 0;
+
+    font-size: clamp(55px, 9vw, 110px);
+
+    line-height: 0.9;
+
+    font-weight: 900;
+
+    letter-spacing: -5px;
+
+    color: #ffffff;
+
+}
+
+
+/* =========================================================
+   15.5 PARTE ROJA DEL TÍTULO
+========================================================= */
+
+.products-hero h1 span {
+
+    display: block;
+
+    color: #E00000;
+
+}
+
+
+/* =========================================================
+   15.6 DESCRIPCIÓN DEL HERO
+========================================================= */
+
+.products-hero p {
+
+    max-width: 650px;
+
+    margin: 30px auto 0;
+
+    color: #a9a9a9;
+
+    font-size: 17px;
+
+    line-height: 1.8;
+
+}
+
+
+/* =========================================================
+   15.7 SECCIÓN DEL CATÁLOGO
+========================================================= */
+
+.products-section {
+
+    padding: 110px 30px 130px;
+
+    background: #f4f4f4;
+
+    color: #080808;
+
+}
+
+
+/* =========================================================
+   15.8 CONTENEDOR DEL CATÁLOGO
+========================================================= */
+
+.products-container {
+
+    max-width: 1250px;
+
+    margin: 0 auto;
+
+}
+
+
+/* =========================================================
+   15.9 ENCABEZADO DEL CATÁLOGO
+========================================================= */
+
+.products-heading {
+
+    margin-bottom: 60px;
+
+}
+
+
+/* =========================================================
+   15.10 PEQUEÑA ETIQUETA
+========================================================= */
+
+.products-heading>span {
+
+    color: #E00000;
+
+    font-size: 12px;
+
+    font-weight: 900;
+
+    letter-spacing: 4px;
+
+}
+
+
+/* =========================================================
+   15.11 TÍTULO DEL CATÁLOGO
+========================================================= */
+
+.products-heading h2 {
+
+    margin: 15px 0 12px;
+
+    font-size: clamp(40px, 6vw, 70px);
+
+    line-height: 0.95;
+
+    font-weight: 900;
+
+    letter-spacing: -3px;
+
+}
+
+
+/* =========================================================
+   15.12 DESCRIPCIÓN DEL CATÁLOGO
+========================================================= */
+
+.products-heading p {
+
+    margin: 0;
+
+    color: #666;
+
+    font-size: 16px;
+
+}
+
+
+/* =========================================================
+   15.13 GRID DE PRODUCTOS
+========================================================= */
+
+.products-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 25px;
+
+}
+
+
+/* =========================================================
+   15.14 TARJETA DE PRODUCTO
+========================================================= */
+
+.product-card {
+
+    position: relative;
+
+    background: #0a0a0a;
+
+    border: 1px solid #e3e3e3;
+
+    overflow: hidden;
+
+    transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease;
+
+}
+
+
+/* =========================================================
+   15.15 HOVER DE LA TARJETA
+========================================================= */
+
+.product-card:hover {
+
+    transform: translateY(-8px);
+
+    box-shadow:
+
+        0 20px 45px rgba(0, 0, 0, 0.12);
+
+}
+
+
+/* =========================================================
+   15.16 ETIQUETA DEL PRODUCTO
+========================================================= */
+
+.product-badge {
+
+    position: absolute;
+
+    top: 18px;
+
+    left: 18px;
+
+    z-index: 5;
+
+    padding: 8px 12px;
+
+    background: #E00000;
+
+    color: #ffffff;
+
+    font-size: 9px;
+
+    font-weight: 900;
+
+    letter-spacing: 1.5px;
+
+}
+
+
+/* =========================================================
+   15.17 IMAGEN DEL PRODUCTO
+========================================================= */
+
+.product-image {
+
+    width: 100%;
+
+    height: 390px;
+
+    overflow: hidden;
+
+    background: #f8f7f7;
+
+}
+
+
+/* =========================================================
+   15.18 IMAGEN REAL
+========================================================= */
+
+.product-image img {
+
+    width: 100%;
+
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+    transition: transform 0.6s ease;
+
+}
+
+
+/* =========================================================
+   15.19 ZOOM DE PRODUCTO
+========================================================= */
+
+.product-card:hover .product-image img {
+
+    transform: scale(1.06);
+
+}
+
+
+/* =========================================================
+   15.20 INFORMACIÓN DEL PRODUCTO
+========================================================= */
+
+.product-info {
+
+    padding: 28px;
+    background: #fcfafa;
+}
+
+
+/* =========================================================
+   15.21 MARCA
+========================================================= */
+
+.product-brand {
+
+    display: block;
+
+    margin-bottom: 10px;
+
+    color: #e00000;
+
+    font-size: 10px;
+
+    font-weight: 900;
+
+    letter-spacing: 2px;
+
+}
+
+
+/* =========================================================
+   15.22 NOMBRE DEL PRODUCTO
+========================================================= */
+
+.product-info h3 {
+
+    margin: 0 0 12px;
+
+    color: #000000;
+
+    font-size: 23px;
+
+    font-weight: 900;
+
+    letter-spacing: -0.5px;
+
+}
+
+
+/* =========================================================
+   15.23 DESCRIPCIÓN DEL PRODUCTO
+========================================================= */
+
+.product-description {
+
+    min-height: 48px;
+
+    margin: 0 0 22px;
+
+    color: #666;
+
+    font-size: 14px;
+
+    line-height: 1.6;
+
+}
+
+
+/* =========================================================
+   15.24 TALLAS
+========================================================= */
+
+.product-sizes {
+
+    display: flex;
+
+    align-items: center;
+
+    flex-wrap: wrap;
+
+    gap: 7px;
+
+    margin-bottom: 25px;
+
+}
+
+
+/* =========================================================
+   15.25 TEXTO "TALLAS"
+========================================================= */
+
+.product-sizes>span {
+
+    margin-right: 4px;
+
+    color: #555;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+}
+
+
+/* =========================================================
+   15.26 BOTONES DE TALLA
+========================================================= */
+
+.product-sizes button {
+
+    width: 34px;
+
+    height: 32px;
+
+    border: 1px solid #d5d5d5;
+
+    background: #ffffff;
+
+    color: #222;
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    cursor: pointer;
+
+    transition: 0.25s ease;
+
+}
+
+
+/* =========================================================
+   15.27 HOVER DE TALLA
+========================================================= */
+
+.product-sizes button:hover {
+
+    background: #080808;
+
+    border-color: #080808;
+
+    color: #ffffff;
+
+}
+
+
+/* =========================================================
+   15.28 PARTE INFERIOR DEL PRODUCTO
+========================================================= */
+
+.product-bottom {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    padding-top: 20px;
+
+    border-top: 1px solid #eeeeee;
+
+}
+
+
+/* =========================================================
+   15.29 PRECIO
+========================================================= */
+
+.product-price {
+
+    color: #080808;
+
+    font-size: 22px;
+
+    font-weight: 900;
+
+}
+
+
+/* =========================================================
+   15.30 BOTÓN AGREGAR
+========================================================= */
+
+.add-cart-btn {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 8px;
+
+    padding: 12px 15px;
+
+    border: none;
+
+    background: #080808;
+
+    color: #ffffff;
+
+    font-size: 10px;
+
+    font-weight: 900;
+
+    letter-spacing: 1px;
+
+    cursor: pointer;
+
+    transition: 0.3s ease;
+
+}
+
+
+/* =========================================================
+   15.31 SIGNO + DEL BOTÓN
+========================================================= */
+
+.add-cart-btn span {
+
+    font-size: 18px;
+
+    line-height: 10px;
+
+}
+
+
+/* =========================================================
+   15.32 HOVER DEL BOTÓN AGREGAR
+========================================================= */
+
+.add-cart-btn:hover {
+
+    background: #E00000;
+
+    transform: translateY(-2px);
+
+}
+
+
+/* =========================================================
+   15.33 SECCIÓN FINAL DE PRODUCTOS
+========================================================= */
+
+.products-cta {
+
+    padding: 140px 25px;
+
+    text-align: center;
+
+    background:
+
+        radial-gradient(circle at center,
+            rgba(224, 0, 0, 0.18),
+            transparent 35%),
+
+        #080808;
+
+}
+
+
+/* =========================================================
+   15.34 CONTENIDO FINAL
+========================================================= */
+
+.products-cta-content {
+
+    max-width: 800px;
+
+    margin: 0 auto;
+
+}
+
+
+/* =========================================================
+   15.35 NOMBRE DE MARCA
+========================================================= */
+
+.products-cta span {
+
+    color: #E00000;
+
+    font-size: 12px;
+
+    font-weight: 900;
+
+    letter-spacing: 5px;
+
+}
+
+
+/* =========================================================
+   15.36 TÍTULO FINAL
+========================================================= */
+
+.products-cta h2 {
+
+    margin: 25px 0;
+
+    color: #ffffff;
+
+    font-size: clamp(45px, 7vw, 80px);
+
+    line-height: 0.95;
+
+    font-weight: 900;
+
+    letter-spacing: -3px;
+
+}
+
+
+/* =========================================================
+   15.37 PALABRA DESTACADA
+========================================================= */
+
+.products-cta h2 strong {
+
+    color: #E00000;
+
+}
+
+
+/* =========================================================
+   15.38 TEXTO FINAL
+========================================================= */
+
+.products-cta p {
+
+    margin: 0 0 35px;
+
+    color: #999;
+
+    font-size: 16px;
+
+    line-height: 1.7;
+
+}
+
+
+/* =========================================================
+   15.39 BOTÓN FINAL
+========================================================= */
+
+.cta-button {
+
+    display: inline-block;
+
+    padding: 16px 35px;
+
+    background: #E00000;
+
+    color: #ffffff;
+
+    text-decoration: none;
+
+    font-size: 11px;
+
+    font-weight: 900;
+
+    letter-spacing: 2px;
+
+    transition: 0.3s ease;
+
+}
+
+
+/* =========================================================
+   15.40 HOVER BOTÓN FINAL
+========================================================= */
+
+.cta-button:hover {
+
+    background: #ffffff;
+
+    color: #080808;
+
+    transform: translateY(-3px);
+
+}
+
+
+/* =========================================================
+   15.41 RESPONSIVE — TABLET
+   ---------------------------------------------------------
+   En tablets se muestran dos productos por fila.
+========================================================= */
+
+@media (max-width: 950px) {
+
+    .products-grid {
+
+        grid-template-columns: repeat(2, 1fr);
+
+    }
+
+    .product-image {
+
+        height: 360px;
+
+    }
+
+}
+
+
+/* =========================================================
+   15.42 RESPONSIVE — CELULAR
+========================================================= */
+
+@media (max-width: 650px) {
+
+    .products-hero {
+
+        min-height: 550px;
+
+        padding: 130px 20px 80px;
+
+    }
+
+
+    .products-hero h1 {
+
+        font-size: 50px;
+
+        letter-spacing: -3px;
+
+    }
+
+
+    .products-hero p {
+
+        font-size: 15px;
+
+    }
+
+
+    .products-section {
+
+        padding: 80px 20px;
+
+    }
+
+
+    .products-heading {
+
+        margin-bottom: 40px;
+
+    }
+
+
+    .products-heading h2 {
+
+        font-size: 42px;
+
+    }
+
+
+    .products-grid {
+
+        grid-template-columns: 1fr;
+
+        gap: 25px;
+
+    }
+
+
+    .product-image {
+
+        height: 400px;
+
+    }
+
+
+    .product-info {
+
+        padding: 25px;
+
+    }
+
+
+    .products-cta {
+
+        padding: 100px 20px;
+
+    }
+
+
+    .products-cta h2 {
+
+        font-size: 45px;
+
+    }
+
+}
+
+
+/* =========================================================
+   15.43 RESPONSIVE — CELULARES PEQUEÑOS
+========================================================= */
+
+@media (max-width: 400px) {
+
+    .products-hero h1 {
+
+        font-size: 42px;
+
+    }
+
+
+    .products-tag {
+
+        font-size: 9px;
+
+        letter-spacing: 3px;
+
+    }
+
+
+    .product-image {
+
+        height: 340px;
+
+    }
+
+
+    .product-bottom {
+
+        align-items: stretch;
+
+        flex-direction: column;
+
+    }
+
+
+    .add-cart-btn {
+
+        width: 100%;
+
+    }
+
+
+    .product-price {
+
+        font-size: 21px;
+
+    }
+
+
+    .products-cta h2 {
+
+        font-size: 38px;
+
+    }
+
+}
+
+/* =========================================================
+   DETALLE DEL PRODUCTO
+   ========================================================= */
+
+/* CONTENEDOR PRINCIPAL */
+
+.product-detail {
+    padding: 140px 20px 70px;
+    background: #f7f7f7;
+    min-height: 80vh;
+}
+
+.product-detail-container {
+    max-width: 1150px;
+    margin: 0 auto;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 70px;
+
+    background: #ffffff;
+    padding: 50px;
+
+    border-radius: 20px;
+
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+}
+
+
+/* =========================================================
+   IMAGEN DEL PRODUCTO
+   ========================================================= */
+
+.product-detail-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 500px;
+
+    background: #f7f5f5;
+
+    border-radius: 16px;
+
+    overflow: hidden;
+}
+
+.product-detail-image img {
+    width: 100%;
+    max-width: 500px;
+    height: 500px;
+
+    object-fit: contain;
+
+    transition: transform 0.4s ease;
+}
+
+.product-detail-image img:hover {
+    transform: scale(1.04);
+}
+
+
+/* =========================================================
+   INFORMACIÓN
+   ========================================================= */
+
+.product-detail-info {
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+}
+
+
+/* MARCA */
+
+.detail-brand {
+    display: inline-block;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    letter-spacing: 3px;
+
+    color: #777;
+
+    text-transform: uppercase;
+
+    margin-bottom: 12px;
+}
+
+
+/* TÍTULO */
+
+.product-detail-info h1 {
+    margin: 0 0 18px;
+
+    font-size: 42px;
+
+    font-weight: 800;
+
+    color: #080808;
+
+    text-transform: uppercase;
+}
+
+
+/* PRECIO */
+
+.detail-price {
+    font-size: 30px;
+
+    font-weight: 800;
+
+    color: #080808;
+
+    margin-bottom: 25px;
+}
+
+
+/* =========================================================
+   DESCRIPCIÓN
+   ========================================================= */
+
+.detail-description {
+    font-size: 16px;
+
+    line-height: 1.7;
+
+    color: #666;
+
+    margin-bottom: 30px;
+
+    max-width: 500px;
+}
+
+
+/* =========================================================
+   OPCIONES
+   ========================================================= */
+
+.detail-option {
+    margin-bottom: 25px;
+}
+
+.detail-option h3 {
+    font-size: 15px;
+
+    margin: 0 0 12px;
+
+    font-weight: 700;
+
+    text-transform: uppercase;
+
+    letter-spacing: 1px;
+}
+
+
+/* =========================================================
+   COLORES
+   ========================================================= */
+
+.color-options {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+}
+
+.color-option {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-width: 90px;
+
+    padding: 10px 15px;
+
+    border: 1px solid #d8d8d8;
+
+    border-radius: 8px;
+
+    background: #f7f6f6;
+
+    color: #222;
+
+    text-decoration: none;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    transition:
+        transform 0.25s ease,
+        background 0.25s ease,
+        border-color 0.25s ease;
+}
+
+.color-option:hover {
+    transform: translateY(-2px);
+
+    border-color: #080808;
+}
+
+.color-option.selected {
+    background: #080808;
+
+    color: #ffffff;
+
+    border-color: #080808;
+}
+
+
+/* =========================================================
+   TALLAS
+   ========================================================= */
+
+.size-options {
+    display: flex;
+
+    gap: 10px;
+
+    flex-wrap: wrap;
+}
+
+.size-option {
+    width: 55px;
+    height: 45px;
+
+    border: 1px solid #d5d5d5;
+
+    background: #ffffff;
+
+    border-radius: 7px;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.25s ease,
+        background 0.25s ease,
+        color 0.25s ease,
+        border-color 0.25s ease;
+}
+
+.size-option:hover {
+    transform: translateY(-2px);
+
+    background: #080808;
+
+    color: #ffffff;
+
+    border-color: #080808;
+}
+
+
+/* TALLA AGOTADA */
+
+.size-option.disabled {
+    opacity: 0.35;
+
+    cursor: not-allowed;
+
+    text-decoration: line-through;
+}
+
+.size-option.disabled:hover {
+    transform: none;
+
+    background: #f1f1f1;
+
+    color: #222;
+
+    border-color: #d5d5d5;
+}
+
+
+/* =========================================================
+   STOCK
+   ========================================================= */
+
+.detail-stock {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 4px;
+
+    margin: 5px 0 25px;
+
+    font-size: 14px;
+}
+
+.detail-stock span {
+    font-weight: 700;
+
+    color: #16833b;
+}
+
+.detail-stock small {
+    color: #777;
+}
+
+.detail-stock .out-stock {
+    color: #d00000;
+}
+
+
+/* =========================================================
+   BOTÓN AGREGAR AL CARRITO
+   ========================================================= */
+
+.detail-cart-btn {
+    width: 100%;
+
+    max-width: 500px;
+
+    padding: 17px 25px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: #080808;
+
+    color: #ffffff;
+
+    font-size: 14px;
+
+    font-weight: 800;
+
+    letter-spacing: 1px;
+
+    cursor: pointer;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 15px;
+
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.detail-cart-btn:hover {
+    transform: translateY(-3px);
+
+    background: #e00000;
+
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.18);
+}
+
+.detail-cart-btn span {
+    font-size: 22px;
+}
+
+.detail-cart-btn.disabled {
+    background: #999;
+
+    cursor: not-allowed;
+}
+
+.detail-cart-btn.disabled:hover {
+    transform: none;
+
+    background: #999;
+
+    box-shadow: none;
+}
+
+
+/* =========================================================
+   VOLVER A PRODUCTOS
+   ========================================================= */
+
+.back-products {
+    text-align: center;
+
+    padding: 0 20px 70px;
+
+    background: #f7f7f7;
+}
+
+.back-products a {
+    display: inline-block;
+
+    color: #080808;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    text-decoration: none;
+
+    letter-spacing: 1px;
+
+    transition: color 0.25s ease;
+}
+
+.back-products a:hover {
+    color: #e00000;
+}
+
+
+/* =========================================================
+   RESPONSIVE - TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    .product-detail-container {
+        grid-template-columns: 1fr;
+
+        gap: 40px;
+
+        padding: 35px;
+    }
+
+    .product-detail-image {
+        min-height: 400px;
+    }
+
+    .product-detail-image img {
+        height: 400px;
+    }
+
+}
+
+
+/* =========================================================
+   RESPONSIVE - CELULAR
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    .product-detail {
+        padding: 110px 15px 40px;
+    }
+
+    .product-detail-container {
+        padding: 20px;
+
+        border-radius: 15px;
+
+        gap: 30px;
+    }
+
+    .product-detail-image {
+        min-height: 330px;
+
+        border-radius: 12px;
+    }
+
+    .product-detail-image img {
+        height: 330px;
+    }
+
+    .product-detail-info h1 {
+        font-size: 30px;
+    }
+
+    .detail-price {
+        font-size: 26px;
+    }
+
+    .detail-description {
+        font-size: 15px;
+    }
+
+    .color-option {
+        min-width: 80px;
+
+        padding: 9px 10px;
+
+        font-size: 12px;
+    }
+
+    .size-option {
+        width: 50px;
+
+        height: 42px;
+    }
+
+    .detail-cart-btn {
+        max-width: 100%;
+    }
+
+}
+
+/* =========================================================
+   DETALLE DEL PRODUCTO
+========================================================= */
+
+.product-detail {
+    padding: 150px 20px 60px;
+    background: #f5f5f5;
+    min-height: 75vh;
+}
+
+.product-detail-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 70px;
+    align-items: center;
+}
+
+
+/* =========================================================
+   IMAGEN DEL PRODUCTO
+========================================================= */
+
+.product-detail-image {
+    background: #ffffff;
+    border-radius: 20px;
+    min-height: 550px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+}
+
+.product-detail-image img {
+    width: 100%;
+    max-width: 500px;
+    height: 500px;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.product-detail-image img:hover {
+    transform: scale(1.04);
+}
+
+.no-image {
+    color: #777;
+    font-size: 18px;
+}
+
+
+/* =========================================================
+   INFORMACIÓN
+========================================================= */
+
+.product-detail-info {
+    background: #ffffff;
+    padding: 45px;
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+}
+
+.detail-brand {
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    color: #777;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+}
+
+.product-detail-info h1 {
+    font-size: 42px;
+    margin: 0 0 15px;
+    font-weight: 900;
+    color: #080808;
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   PRECIO
+========================================================= */
+
+.detail-price {
+    font-size: 32px;
+    font-weight: 900;
+    color: #080808;
+    margin-bottom: 25px;
+}
+
+
+/* =========================================================
+   DESCRIPCIÓN
+========================================================= */
+
+.detail-description {
+    font-size: 16px;
+    line-height: 1.7;
+    color: #666;
+    margin-bottom: 30px;
+    max-width: 520px;
+}
+
+
+/* =========================================================
+   OPCIONES
+========================================================= */
+
+.detail-option {
+    margin-top: 28px;
+}
+
+.detail-option h3 {
+    font-size: 15px;
+    margin-bottom: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+
+/* =========================================================
+   COLORES
+========================================================= */
+
+.color-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.color-option {
+    display: inline-block;
+    padding: 11px 18px;
+    border: 1px solid #d5d5d5;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #222;
+    font-size: 14px;
+    font-weight: 700;
+    transition: all 0.25s ease;
+    background: #fff;
+}
+
+.color-option:hover {
+    background: #080808;
+    color: #fff;
+    border-color: #080808;
+    transform: translateY(-2px);
+}
+
+.color-option.selected {
+    background: #080808;
+    color: #fff;
+    border-color: #080808;
+}
+
+
+/* =========================================================
+   TALLAS
+========================================================= */
+
+.size-options {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.size-option {
+    width: 55px;
+    height: 45px;
+    border: 1px solid #ccc;
+    background: #fff;
+    border-radius: 7px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.size-option:hover:not(.disabled) {
+    background: #080808;
+    color: #fff;
+    border-color: #080808;
+}
+
+.size-option.disabled {
+    background: #eeeeee;
+    color: #999;
+    cursor: not-allowed;
+    text-decoration: line-through;
+}
+
+
+/* =========================================================
+   STOCK
+========================================================= */
+
+.detail-stock {
+    margin-top: 25px;
+    padding: 15px;
+    background: #f6f6f6;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.detail-stock span {
+    color: #16803c;
+    font-weight: 800;
+}
+
+.detail-stock small {
+    color: #777;
+}
+
+.detail-stock .out-stock {
+    color: #d00000;
+}
+
+
+/* =========================================================
+   BOTÓN CARRITO
+========================================================= */
+
+.detail-cart-btn {
+    width: 100%;
+    margin-top: 25px;
+    padding: 17px 25px;
+    border: none;
+    border-radius: 8px;
+    background: #080808;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 900;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.detail-cart-btn span {
+    font-size: 20px;
+    margin-left: 8px;
+}
+
+.detail-cart-btn:hover {
+    background: #e00000;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.detail-cart-btn.disabled {
+    background: #999;
+    cursor: not-allowed;
+}
+
+.detail-cart-btn.disabled:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+
+/* =========================================================
+   VOLVER A PRODUCTOS
+========================================================= */
+
+.back-products {
+    padding: 30px 20px 50px;
+    text-align: center;
+    background: #f5f5f5;
+}
+
+.back-products a {
+    display: inline-block;
+    color: #080808;
+    text-decoration: none;
+    font-weight: 800;
+    font-size: 14px;
+    letter-spacing: 1px;
+    transition: 0.3s ease;
+}
+
+.back-products a:hover {
+    color: #e00000;
+    transform: translateX(-4px);
+}
+
+
+/* =========================================================
+   RESPONSIVE - TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .product-detail-container {
+        grid-template-columns: 1fr;
+        gap: 35px;
+        max-width: 650px;
+    }
+
+    .product-detail-image {
+        min-height: 450px;
+    }
+
+    .product-detail-image img {
+        height: 400px;
+    }
+
+}
+
+
+/* =========================================================
+   RESPONSIVE - CELULAR
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .product-detail {
+        padding: 120px 15px 40px;
+    }
+
+    .product-detail-container {
+        width: 100%;
+        gap: 20px;
+    }
+
+    .product-detail-image {
+        min-height: 350px;
+        padding: 20px;
+        border-radius: 15px;
+    }
+
+    .product-detail-image img {
+        height: 330px;
+    }
+
+    .product-detail-info {
+        padding: 25px 20px;
+        border-radius: 15px;
+    }
+
+    .product-detail-info h1 {
+        font-size: 30px;
+    }
+
+    .detail-price {
+        font-size: 27px;
+    }
+
+    .detail-description {
+        font-size: 15px;
+    }
+
+    .color-option {
+        padding: 10px 14px;
+        font-size: 13px;
+    }
+
+    .size-option {
+        width: 50px;
+        height: 43px;
+    }
+
+}
+
+/* =========================================================
+   ESTILO EXCLUSIVO - DETALLE DEL PRODUCTO
+   ========================================================= */
+
+body.pagina-detalle {
+    background: #f5f5f5 !important;
+    color: #111;
+}
+
+/* Contenedor principal */
+body.pagina-detalle .detalle-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 50px auto;
+    background: #fff;
+    border-radius: 20px;
+    padding: 35px;
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.10);
+
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 50px;
+    align-items: center;
+}
+
+/* Galería */
+body.pagina-detalle .galeria-producto {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+body.pagina-detalle .galeria-producto img {
+    width: 100%;
+    height: 300px;
+    object-fit: contain;
+    background: #fff;
+    border-radius: 12px;
+    border: 1px solid #e5e5e5;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+body.pagina-detalle .galeria-producto img:hover {
+    transform: scale(1.03);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+/* Información */
+body.pagina-detalle .info-producto {
+    background: #fff;
+    padding: 35px;
+    border-radius: 18px;
+}
+
+body.pagina-detalle .info-producto h1 {
+    font-size: 36px;
+    margin: 10px 0;
+    font-weight: 800;
+}
+
+body.pagina-detalle .precio-producto {
+    font-size: 28px;
+    font-weight: 800;
+    margin: 15px 0 25px;
+}
+
+body.pagina-detalle .descripcion-producto {
+    color: #666;
+    line-height: 1.7;
+    margin-bottom: 30px;
+}
+
+/* Opciones */
+body.pagina-detalle .opciones-producto {
+    margin-top: 20px;
+}
+
+body.pagina-detalle .opciones-producto button {
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 10px 15px;
+    margin: 5px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+body.pagina-detalle .opciones-producto button:hover {
+    background: #111;
+    color: #fff;
+    border-color: #111;
+}
+
+/* Botón carrito */
+body.pagina-detalle .btn-carrito {
+    width: 100%;
+    background: #080808;
+    color: #fff;
+    border: none;
+    padding: 16px;
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 25px;
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+body.pagina-detalle .btn-carrito:hover {
+    background: #e00000;
+    transform: translateY(-2px);
+}
+
+/* Móvil */
+@media (max-width: 768px) {
+    .brands-intro .section-number {
+        font-size: 42px !important;
+        line-height: 0.95 !important;
+        letter-spacing: -2px !important;
+
+        display: block;
+
+        width: 100%;
+        max-width: 100%;
+
+        overflow: hidden;
+    }
+
+
+    body.pagina-detalle .detalle-container {
+        width: 92%;
+        padding: 20px;
+        margin: 30px auto;
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    body.pagina-detalle .galeria-producto {
+        grid-template-columns: 1fr;
+    }
+
+    body.pagina-detalle .galeria-producto img {
+        height: 280px;
+    }
+
+    body.pagina-detalle .info-producto {
+        padding: 20px;
+    }
+
+    body.pagina-detalle .info-producto h1 {
+        font-size: 28px;
+    }
+
+    body.pagina-detalle .precio-producto {
+        font-size: 24px;
+    }
+}
+
+/* =========================================================
+   PRODUCTOS - ESTILO URBANO BOXER HOUSE
+========================================================= */
+
+.productos-page {
+    background: #080808;
+    min-height: 100vh;
+    padding-top: 90px;
+    color: #ffffff;
+}
+
+
+/* =========================================================
+   HERO PRODUCTOS
+========================================================= */
+
+.productos-hero {
+    max-width: 1250px;
+    margin: 0 auto;
+    padding: 90px 30px 70px;
+    position: relative;
+}
+
+.productos-number {
+    display: block;
+    font-size: 90px;
+    font-weight: 900;
+    line-height: 0.8;
+    color: #e00000;
+    letter-spacing: -5px;
+    margin-bottom: 30px;
+}
+
+.productos-label {
+    color: #e00000;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 5px;
+    margin-bottom: 20px;
+}
+
+.productos-hero h1 {
+    font-size: clamp(55px, 8vw, 110px);
+    line-height: 0.85;
+    font-weight: 900;
+    letter-spacing: -5px;
+    margin: 0;
+}
+
+.productos-hero h1 span {
+    color: #e00000;
+}
+
+.productos-description {
+    max-width: 500px;
+    margin-top: 30px;
+    color: #a5a5a5;
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   CATÁLOGO
+========================================================= */
+
+.productos-catalogo {
+    max-width: 1250px;
+    margin: 0 auto;
+    padding: 20px 30px 100px;
+}
+
+.productos-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+
+/* =========================================================
+   TARJETA
+========================================================= */
+
+.producto-card {
+    background: #111111;
+    border: 1px solid #292929;
+    overflow: hidden;
+    position: relative;
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.producto-card:hover {
+    transform: translateY(-10px);
+    border-color: #e00000;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+}
+
+
+/* =========================================================
+   IMAGEN
+========================================================= */
+
+.producto-image {
+    background: #f5f5f5;
+    height: 430px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.producto-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: transform 0.5s ease;
+}
+
+.producto-card:hover .producto-image img {
+    transform: scale(1.06);
+}
+
+
+/* =========================================================
+   INFORMACIÓN
+========================================================= */
+
+.producto-info {
+    padding: 28px;
+}
+
+.producto-brand {
+    color: #777777;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.producto-info h2 {
+    margin: 10px 0 8px;
+    font-size: 30px;
+    font-weight: 900;
+    letter-spacing: -1px;
+    color: #ffffff;
+}
+
+.producto-price {
+    color: #ffffff;
+    font-size: 21px;
+    font-weight: 800;
+    margin-bottom: 25px;
+}
+
+
+/* =========================================================
+   BOTÓN
+========================================================= */
+
+.producto-button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 100%;
+
+    padding: 15px 18px;
+
+    background: #e00000;
+    color: #ffffff;
+
+    text-decoration: none;
+
+    font-size: 12px;
+    font-weight: 900;
+    letter-spacing: 1.5px;
+
+    transition:
+        background 0.3s ease,
+        transform 0.3s ease;
+}
+
+.producto-button:hover {
+    background: #ffffff;
+    color: #080808;
+}
+
+.producto-button span {
+    font-size: 20px;
+}
+
+
+/* =========================================================
+   PRODUCTO ACTIVO EN EL MENÚ
+========================================================= */
+
+.navbar a.active {
+    color: #e00000;
+}
+
+
+/* =========================================================
+   RESPONSIVE - TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .productos-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .producto-image {
+        height: 350px;
+    }
+
+}
+
+
+/* =========================================================
+   RESPONSIVE - MÓVIL
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .productos-page {
+        padding-top: 80px;
+    }
+
+    .productos-hero {
+        padding: 60px 20px 45px;
+    }
+
+    .productos-number {
+        font-size: 65px;
+    }
+
+    .productos-label {
+        font-size: 10px;
+        letter-spacing: 3px;
+    }
+
+    .productos-hero h1 {
+        font-size: 55px;
+        letter-spacing: -3px;
+    }
+
+    .productos-description {
+        font-size: 14px;
+    }
+
+    .productos-catalogo {
+        padding: 10px 20px 70px;
+    }
+
+    .productos-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .producto-image {
+        height: 380px;
+    }
+
+    .producto-info h2 {
+        font-size: 27px;
+    }
+
+}
+
+/* =========================================================
+   PRODUCTOS - ESTILO URBANO BOXER HOUSE
+========================================================= */
+
+.products-page {
+    background: #080808;
+    min-height: 100vh;
+    padding-top: 90px;
+    color: #fcfcfc;
+}
+
+.products-section {
+    width: 100%;
+}
+
+.products-container {
+    max-width: 1250px;
+    margin: 0 auto;
+    padding: 70px 30px 100px;
+}
+
+
+/* =========================================================
+   ENCABEZADO DE PRODUCTOS
+========================================================= */
+
+.section-header {
+    margin-bottom: 55px;
+    position: relative;
+
+}
+
+.section-number {
+    display: block;
+    color: #e00000;
+    font-size: 90px;
+    font-weight: 900;
+    line-height: 0.8;
+    letter-spacing: -5px;
+    margin-bottom: 25px;
+}
+
+.section-header h1 {
+    margin: 0;
+    color: #000000;
+    font-size: clamp(55px, 8vw, 100px);
+    font-weight: 900;
+    line-height: 0.85;
+    letter-spacing: -5px;
+}
+
+.section-header p {
+    margin-top: 25px;
+    color: #464545;
+    font-size: 16px;
+    letter-spacing: 1px;
+}
+
+
+/* =========================================================
+   LÍNEA DECORATIVA
+========================================================= */
+
+.section-header::after {
+    content: "";
+    display: block;
+    width: 80px;
+    height: 5px;
+    background: #e00000;
+    margin-top: 30px;
+}
+
+
+/* =========================================================
+   GRID DE PRODUCTOS
+========================================================= */
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+}
+
+
+/* =========================================================
+   TARJETA DEL PRODUCTO
+========================================================= */
+
+.product-card {
+    background: #f8f8f8;
+    border: 1px solid #000000;
+    overflow: hidden;
+    position: relative;
+
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-10px);
+    border-color: #e00000;
+
+    box-shadow:
+        0 20px 45px rgba(7, 7, 7, 0.7);
+}
+
+
+/* =========================================================
+   ETIQUETA URBANA
+========================================================= */
+
+.product-card::before {
+    content: "BOXER HOUSE";
+    position: absolute;
+
+    top: 15px;
+    left: 15px;
+
+    z-index: 2;
+
+    padding: 7px 10px;
+
+    background: #e00000;
+    color: #ffffff;
+
+    font-size: 9px;
+    font-weight: 900;
+
+    letter-spacing: 1.5px;
+}
+
+
+/* =========================================================
+   IMAGEN DEL PRODUCTO
+========================================================= */
+
+.product-image {
+    height: 430px;
+
+    background: #f5f5f5;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+
+    transition:
+        transform 0.5s ease;
+}
+
+.product-card:hover .product-image img {
+    transform: scale(1.07);
+}
+
+
+/* =========================================================
+   INFORMACIÓN DEL PRODUCTO
+========================================================= */
+
+.product-info {
+    padding: 25px;
+}
+
+.product-brand {
+    display: block;
+
+    color: #888888;
+
+    font-size: 11px;
+    font-weight: 800;
+
+    letter-spacing: 3px;
+
+    text-transform: uppercase;
+}
+
+.product-info h2 {
+    margin: 10px 0 8px;
+
+    color: #1b1b1b;
+
+    font-size: 30px;
+    font-weight: 900;
+
+    letter-spacing: -1px;
+}
+
+.product-price {
+    margin: 0 0 22px;
+
+    color: #1b1b1b;
+
+    font-size: 22px;
+    font-weight: 900;
+}
+
+
+/* =========================================================
+   BOTÓN VER PRODUCTO
+========================================================= */
+
+.product-btn {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+
+    padding: 15px 18px;
+
+    background: #e00000;
+    color: #ffffff;
+
+    text-decoration: none;
+
+    font-size: 12px;
+    font-weight: 900;
+
+    letter-spacing: 1.5px;
+
+    transition:
+        background 0.3s ease,
+        color 0.3s ease,
+        transform 0.3s ease;
+}
+
+.product-btn:hover {
+    background: #ffffff;
+    color: #0a0a0a;
+
+    transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   PRODUCTO ACTIVO EN EL MENÚ
+========================================================= */
+
+.navbar a.active {
+    color: #e00000;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .product-image {
+        height: 350px;
+    }
+
+}
+
+
+/* =========================================================
+   MÓVIL
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .products-page {
+        padding-top: 80px;
+    }
+
+    .products-container {
+        padding: 55px 20px 70px;
+    }
+
+    .section-number {
+        font-size: 65px;
+    }
+
+    .section-header h1 {
+        font-size: 55px;
+        letter-spacing: -3px;
+    }
+
+    .section-header p {
+        font-size: 14px;
+    }
+
+    .products-grid {
+        grid-template-columns: 1fr;
+        gap: 22px;
+    }
+
+    .product-image {
+        height: 380px;
+    }
+
+    .product-info h2 {
+        font-size: 27px;
+    }
+
+}
+
+/* =========================================================
+   04. FINALIZAR COMPRA
+========================================================= */
+
+.checkout-page {
+    background: #080808;
+    min-height: 100vh;
+    padding-top: 150px;
+}
+
+.checkout-section {
+    padding: 30px 0 100px;
+}
+
+.checkout-container {
+    width: 90%;
+    max-width: 1250px;
+    margin: 0 auto;
+}
+
+
+/* =========================================================
+   ENCABEZADO
+========================================================= */
+
+.checkout-page .section-header {
+    margin-bottom: 55px;
+}
+
+.checkout-page .section-number {
+    display: block;
+    font-size: 76px;
+    font-weight: 900;
+    line-height: 1;
+    color: #e00000;
+    margin-bottom: 18px;
+}
+
+.checkout-page .section-label {
+    display: block;
+    color: #e00000;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 5px;
+    margin-bottom: 18px;
+}
+
+.checkout-page .section-header h1 {
+    color: #ffffff;
+    font-size: 58px;
+    font-weight: 900;
+    line-height: 1;
+    margin: 0 0 18px;
+}
+
+.checkout-page .section-header p {
+    color: #888888;
+    font-size: 16px;
+    margin: 0;
+}
+
+
+/* =========================================================
+   DISTRIBUCIÓN
+========================================================= */
+
+.checkout-grid {
+    display: grid;
+    grid-template-columns: 1.6fr 0.9fr;
+    gap: 30px;
+    align-items: start;
+}
+
+
+/* =========================================================
+   FORMULARIO
+========================================================= */
+
+.checkout-form-box {
+    background: #111111;
+    border: 1px solid #292929;
+    padding: 40px;
+}
+
+.checkout-form-box h2 {
+    color: #ffffff;
+    font-size: 25px;
+    font-weight: 900;
+    margin: 0 0 35px;
+}
+
+
+/* =========================================================
+   CAMPOS
+========================================================= */
+
+.form-group {
+    margin-bottom: 24px;
+}
+
+.form-group label {
+    display: block;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    margin-bottom: 9px;
+}
+
+.form-group input {
+    width: 100%;
+    height: 50px;
+    box-sizing: border-box;
+
+    background: #080808;
+    border: 1px solid #383838;
+
+    color: #ffffff;
+
+    padding: 0 15px;
+
+    font-size: 15px;
+
+    outline: none;
+
+    transition:
+        border 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.form-group input:focus {
+    border-color: #e00000;
+    box-shadow: 0 0 0 1px #e00000;
+}
+
+
+/* =========================================================
+   BOTÓN CONFIRMAR
+========================================================= */
+
+.checkout-form-box .checkout-btn {
+    width: 100%;
+    min-height: 55px;
+
+    margin-top: 15px;
+
+    border: none;
+
+    background: #e00000;
+    color: #ffffff;
+
+    font-size: 13px;
+    font-weight: 900;
+    letter-spacing: 1px;
+
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 22px;
+
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.checkout-form-box .checkout-btn:hover {
+    background: #ff0000;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(224, 0, 0, 0.25);
+}
+
+.checkout-form-box .checkout-btn span {
+    font-size: 22px;
+}
+
+
+/* =========================================================
+   RESUMEN
+========================================================= */
+
+.checkout-summary {
+    background: #ffffff;
+    color: #080808;
+    padding: 35px;
+}
+
+.summary-label {
+    display: block;
+
+    color: #777777;
+
+    font-size: 11px;
+    font-weight: 900;
+
+    letter-spacing: 4px;
+
+    margin-bottom: 18px;
+}
+
+.checkout-summary h2 {
+    color: #080808;
+
+    font-size: 30px;
+    font-weight: 900;
+
+    margin: 0 0 30px;
+}
+
+
+/* =========================================================
+   PRODUCTOS DEL RESUMEN
+========================================================= */
+
+.summary-product {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    gap: 20px;
+
+    padding: 20px 0;
+
+    border-bottom: 1px solid #dddddd;
+}
+
+.summary-product strong {
+    display: block;
+
+    color: #080808;
+
+    font-size: 16px;
+    font-weight: 900;
+
+    margin-bottom: 8px;
+}
+
+.summary-product p {
+    margin: 0;
+
+    color: #666666;
+
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+.summary-product>span {
+    color: #080808;
+
+    font-size: 15px;
+    font-weight: 900;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   TOTAL
+========================================================= */
+
+.summary-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding-top: 28px;
+}
+
+.summary-total span {
+    color: #080808;
+
+    font-size: 13px;
+    font-weight: 900;
+
+    letter-spacing: 1px;
+}
+
+.summary-total strong {
+    color: #080808;
+
+    font-size: 28px;
+    font-weight: 900;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .checkout-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .checkout-summary {
+        order: -1;
+    }
+
+}
+
+
+@media (max-width: 768px) {
+
+    .checkout-section {
+        padding: 50px 0 70px;
+    }
+
+    .checkout-container {
+        width: 92%;
+    }
+
+    .checkout-page .section-number {
+        font-size: 60px;
+    }
+
+    .checkout-page .section-header h1 {
+        font-size: 42px;
+    }
+
+    .checkout-form-box {
+        padding: 25px;
+    }
+
+    .checkout-summary {
+        padding: 25px;
+    }
+
+}
+
+
+@media (max-width: 480px) {
+
+    .checkout-page .section-number {
+        font-size: 50px;
+    }
+
+    .checkout-page .section-header h1 {
+        font-size: 34px;
+    }
+
+    .checkout-form-box h2 {
+        font-size: 21px;
+    }
+
+    .summary-total strong {
+        font-size: 23px;
+    }
+
+}
+
+/* =========================================================
+   05. PEDIDO CONFIRMADO
+========================================================= */
+
+.confirmation-page {
+
+    background: #080808;
+
+    min-height: 100vh;
+
+    padding-top: 150px;
+
+    padding-bottom: 120px;
+
+    color: #ffffff;
+
+}
+
+
+.confirmation-container {
+
+    width: 90%;
+
+    max-width: 1250px;
+
+    margin: 0 auto;
+
+}
+
+
+/* =========================================================
+   ENCABEZADO
+========================================================= */
+
+.confirmation-header {
+
+    margin-bottom: 55px;
+
+}
+
+
+.confirmation-header .section-number {
+
+    display: block;
+
+    font-size: 78px;
+
+    font-weight: 900;
+
+    line-height: 1;
+
+    color: #e00000;
+
+    margin-bottom: 15px;
+
+}
+
+
+.confirmation-header .section-label {
+
+    display: block;
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+    letter-spacing: 5px;
+
+    color: #e00000;
+
+    margin-bottom: 18px;
+
+}
+
+
+.confirmation-header h1 {
+
+    margin: 0;
+
+    font-size: 64px;
+
+    font-weight: 900;
+
+    line-height: 1;
+
+}
+
+
+.confirmation-header p {
+
+    margin-top: 20px;
+
+    color: #999;
+
+    font-size: 16px;
+
+}
+
+
+/* =========================================================
+   CONTENIDO
+========================================================= */
+
+.confirmation-content {
+
+    display: grid;
+
+    grid-template-columns: 1fr 380px;
+
+    gap: 30px;
+
+    align-items: start;
+
+}
+
+
+/* =========================================================
+   MENSAJE
+========================================================= */
+
+.confirmation-message {
+
+    border: 1px solid #292929;
+
+    background: #111111;
+
+    padding: 55px;
+
+}
+
+
+.confirmation-icon {
+
+    width: 65px;
+
+    height: 65px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: #e00000;
+
+    color: #ffffff;
+
+    font-size: 32px;
+
+    font-weight: 900;
+
+    margin-bottom: 30px;
+
+}
+
+
+.confirmation-small {
+
+    display: block;
+
+    color: #999;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: 4px;
+
+    margin-bottom: 15px;
+
+}
+
+
+.confirmation-message h2 {
+
+    margin: 0;
+
+    font-size: 34px;
+
+    font-weight: 800;
+
+    line-height: 1.15;
+
+}
+
+
+.confirmation-message>p {
+
+    color: #999;
+
+    margin-top: 20px;
+
+    font-size: 16px;
+
+}
+
+
+/* =========================================================
+   NÚMERO DE PEDIDO
+========================================================= */
+
+.order-number {
+
+    margin-top: 40px;
+
+    padding-top: 25px;
+
+    border-top: 1px solid #292929;
+
+    color: #777;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: 3px;
+
+}
+
+
+.order-number strong {
+
+    display: block;
+
+    color: #ffffff;
+
+    font-size: 28px;
+
+    letter-spacing: 0;
+
+    margin-top: 8px;
+
+}
+
+
+/* =========================================================
+   RESUMEN
+========================================================= */
+
+.confirmation-summary {
+
+    background: #ffffff;
+
+    color: #080808;
+
+    padding: 35px;
+
+}
+
+
+.summary-label {
+
+    display: block;
+
+    color: #777;
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    letter-spacing: 4px;
+
+    margin-bottom: 20px;
+
+}
+
+
+.confirmation-summary h3 {
+
+    margin: 0 0 30px;
+
+    font-size: 30px;
+
+    font-weight: 900;
+
+}
+
+
+.confirmation-product {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding: 20px 0;
+
+    border-bottom: 1px solid #dddddd;
+
+}
+
+
+.confirmation-product strong {
+
+    font-size: 16px;
+
+}
+
+
+.confirmation-product p {
+
+    margin: 7px 0 0;
+
+    color: #777;
+
+    font-size: 13px;
+
+}
+
+
+.confirmation-total {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding-top: 30px;
+
+}
+
+
+.confirmation-total span {
+
+    font-size: 13px;
+
+    font-weight: 900;
+
+}
+
+
+.confirmation-total strong {
+
+    font-size: 27px;
+
+}
+
+
+/* =========================================================
+   BOTONES
+========================================================= */
+
+.confirmation-buttons {
+
+    display: flex;
+
+    gap: 15px;
+
+    margin-top: 30px;
+
+}
+
+
+.confirmation-btn-primary,
+.confirmation-btn-secondary {
+
+    min-height: 58px;
+
+    padding: 0 30px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    text-decoration: none;
+
+    font-size: 12px;
+
+    font-weight: 900;
+
+    letter-spacing: 1px;
+
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease,
+        box-shadow 0.3s ease;
+
+}
+
+
+.confirmation-btn-primary {
+
+    flex: 1;
+
+    background: #e00000;
+
+    color: #ffffff;
+
+}
+
+
+.confirmation-btn-primary:hover {
+
+    background: #c00000;
+
+    transform: translateY(-2px);
+
+}
+
+
+.confirmation-btn-secondary {
+
+    background: transparent;
+
+    border: 1px solid #ffffff;
+
+    color: #ffffff;
+
+}
+
+
+.confirmation-btn-secondary:hover {
+
+    background: #ffffff;
+
+    color: #080808;
+
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 768px) {
+
+
+    .confirmation-page {
+
+        padding-top: 120px;
+
+    }
+
+
+    .confirmation-header .section-number {
+
+        font-size: 60px;
+
+    }
+
+
+    .confirmation-header h1 {
+
+        font-size: 42px;
+
+    }
+
+
+    .confirmation-content {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .confirmation-message {
+
+        padding: 35px 25px;
+
+    }
+
+
+    .confirmation-message h2 {
+
+        font-size: 27px;
+
+    }
+
+
+    .confirmation-summary {
+
+        padding: 25px;
+
+    }
+
+
+    .confirmation-buttons {
+
+        flex-direction: column;
+
+    }
+
+
+    .confirmation-btn-primary,
+    .confirmation-btn-secondary {
+
+        width: 100%;
+
+        box-sizing: border-box;
+
+    }
+
+}
+
+/* =========================================================
+   06. PÁGINA DE PAGO
+========================================================= */
+
+.payment-page {
+
+    background: #080808;
+
+    min-height: 100vh;
+
+    padding-top: 150px;
+
+    padding-bottom: 100px;
+
+    color: #ffffff;
+
+}
+
+
+.payment-container {
+
+    width: 90%;
+
+    max-width: 1250px;
+
+    margin: 0 auto;
+
+}
+
+
+/* =========================================================
+   ENCABEZADO
+========================================================= */
+
+.payment-header {
+
+    margin-bottom: 55px;
+
+}
+
+
+.payment-header .section-number {
+
+    display: block;
+
+    font-size: 78px;
+
+    font-weight: 900;
+
+    line-height: 1;
+
+    color: #e00000;
+
+    margin-bottom: 15px;
+
+}
+
+
+.payment-header .section-label {
+
+    display: block;
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+    letter-spacing: 5px;
+
+    color: #e00000;
+
+    margin-bottom: 18px;
+
+}
+
+
+.payment-header h1 {
+
+    margin: 0;
+
+    font-size: 64px;
+
+    font-weight: 900;
+
+    line-height: 1;
+
+}
+
+
+.payment-header p {
+
+    margin-top: 20px;
+
+    color: #999;
+
+    font-size: 16px;
+
+}
+
+
+/* =========================================================
+   CONTENIDO
+========================================================= */
+
+.payment-content {
+
+    display: grid;
+
+    grid-template-columns: 1fr 380px;
+
+    gap: 30px;
+
+    align-items: start;
+
+}
+
+
+/* =========================================================
+   MÉTODOS DE PAGO
+========================================================= */
+
+.payment-methods {
+
+    background: #111111;
+
+    border: 1px solid #292929;
+
+    padding: 40px;
+
+}
+
+
+.payment-methods h2 {
+
+    margin: 0 0 30px;
+
+    font-size: 22px;
+
+    font-weight: 900;
+
+    letter-spacing: 1px;
+
+}
+
+
+/* =========================================================
+   OPCIONES
+========================================================= */
+
+.payment-option {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
+
+    padding: 22px;
+
+    margin-bottom: 12px;
+
+    background: #080808;
+
+    border: 1px solid #292929;
+
+    cursor: pointer;
+
+    transition:
+        background 0.3s ease,
+        border-color 0.3s ease,
+        transform 0.3s ease;
+
+}
+
+
+.payment-option:hover {
+
+    border-color: #e00000;
+
+    transform: translateX(3px);
+
+}
+
+
+.payment-option input {
+
+    width: 18px;
+
+    height: 18px;
+
+    accent-color: #e00000;
+
+}
+
+
+.payment-option span {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    flex: 1;
+
+}
+
+
+.payment-option strong {
+
+    font-size: 14px;
+
+    letter-spacing: 1px;
+
+}
+
+
+.payment-option small {
+
+    margin-left: auto;
+
+    color: #777;
+
+    font-size: 12px;
+
+}
+
+
+/* =========================================================
+   BOTÓN PAGAR
+========================================================= */
+
+.payment-btn {
+
+    width: 100%;
+
+    min-height: 60px;
+
+    margin-top: 20px;
+
+    padding: 0 25px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    border: none;
+
+    background: #e00000;
+
+    color: #ffffff;
+
+    cursor: pointer;
+
+    font-family: inherit;
+
+    font-size: 12px;
+
+    font-weight: 900;
+
+    letter-spacing: 1px;
+
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease,
+        box-shadow 0.3s ease;
+
+}
+
+
+.payment-btn:hover {
+
+    background: #c00000;
+
+    transform: translateY(-2px);
+
+}
+
+
+/* =========================================================
+   RESUMEN
+========================================================= */
+
+.payment-summary {
+
+    background: #ffffff;
+
+    color: #080808;
+
+    padding: 35px;
+
+}
+
+
+.summary-label {
+
+    display: block;
+
+    color: #777;
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    letter-spacing: 4px;
+
+    margin-bottom: 20px;
+
+}
+
+
+.payment-summary h3 {
+
+    margin: 0 0 30px;
+
+    font-size: 30px;
+
+    font-weight: 900;
+
+}
+
+
+.payment-product {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding: 20px 0;
+
+    border-bottom: 1px solid #dddddd;
+
+}
+
+
+.payment-product strong {
+
+    font-size: 16px;
+
+}
+
+
+.payment-product p {
+
+    margin: 7px 0 0;
+
+    color: #777;
+
+    font-size: 13px;
+
+}
+
+
+.payment-total {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding-top: 30px;
+
+}
+
+
+.payment-total span {
+
+    font-size: 13px;
+
+    font-weight: 900;
+
+}
+
+
+.payment-total strong {
+
+    font-size: 27px;
+
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 768px) {
+
+
+    .payment-page {
+
+        padding-top: 120px;
+
+    }
+
+
+    .payment-header .section-number {
+
+        font-size: 60px;
+
+    }
+
+
+    .payment-header h1 {
+
+        font-size: 42px;
+
+    }
+
+
+    .payment-content {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .payment-methods {
+
+        padding: 25px;
+
+    }
+
+
+    .payment-option {
+
+        padding: 18px;
+
+    }
+
+
+    .payment-option span {
+
+        flex-wrap: wrap;
+
+    }
+
+
+    .payment-option small {
+
+        width: 100%;
+
+        margin-left: 0;
+
+    }
+
+
+    .payment-summary {
+
+        padding: 25px;
+
+    }
+
+}
+
+/* =========================================================
+   FORMULARIO WHATSAPP
+   ========================================================= */
+
+#whatsappForm {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+
+    background: rgba(0, 0, 0, 0.80);
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+}
+
+/* TARJETA DEL FORMULARIO */
+
+#whatsappForm>div {
+    position: relative;
+
+    width: 100%;
+    max-width: 500px;
+
+    background: #080808;
+    border: 1px solid #333;
+
+    padding: 40px;
+
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+}
+
+/* ETIQUETA */
+
+#whatsappForm small {
+    display: block;
+
+    color: #e00000;
+
+    font-size: 11px;
+    font-weight: 800;
+
+    letter-spacing: 5px;
+
+    margin-bottom: 10px;
+}
+
+/* TÍTULO */
+
+#whatsappForm h2 {
+    color: #ffffff;
+
+    font-size: 32px;
+    font-weight: 900;
+
+    margin: 0 0 10px;
+}
+
+/* DESCRIPCIÓN */
+
+#whatsappForm p {
+    color: #aaa;
+
+    font-size: 14px;
+
+    margin-bottom: 25px;
+}
+
+/* LABELS */
+
+#whatsappForm label {
+    display: block;
+
+    color: #ffffff;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    margin-bottom: 6px;
+}
+
+/* CAMPOS */
+
+#whatsappForm input {
+    width: 100%;
+
+    box-sizing: border-box;
+
+    background: #ffffff;
+    color: #111;
+
+    border: none;
+
+    padding: 13px 14px;
+
+    margin-bottom: 18px;
+
+    font-size: 14px;
+
+    outline: none;
+}
+
+/* EFECTO AL SELECCIONAR */
+
+#whatsappForm input:focus {
+    border-left: 4px solid #e00000;
+}
+
+/* BOTÓN ENVIAR */
+
+#whatsappForm button[type="submit"] {
+    width: 100%;
+
+    background: #e00000;
+    color: #ffffff;
+
+    border: none;
+
+    padding: 15px;
+
+    font-size: 13px;
+    font-weight: 800;
+
+    letter-spacing: 1px;
+
+    cursor: pointer;
+
+    transition: 0.3s ease;
+}
+
+#whatsappForm button[type="submit"]:hover {
+    background: #ffffff;
+    color: #000000;
+}
+
+/* BOTÓN CERRAR */
+
+#whatsappForm .close-whatsapp {
+    position: absolute;
+
+
+    top: 15px;
+    right: 18px;
+
+    background: transparent;
+
+    color: #ffffff;
+
+    border: none;
+
+    font-size: 24px;
+
+    cursor: pointer;
+}
+
+/* =========================================================
+   CELULAR
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    #whatsappForm {
+        padding: 15px;
+    }
+
+    #whatsappForm>div {
+        padding: 30px 22px;
+    }
+
+    #whatsappForm h2 {
+        font-size: 25px;
+    }
+
+}
+
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #000;
+    color: #fff;
+    overflow-x: hidden;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+a {
+    color: inherit;
+}
+
+button,
+a {
+    -webkit-tap-highlight-color: transparent;
+}
+
+.container {
+    width: 100%;
+    max-width: 1250px;
+    height: 100%;
+    margin: auto;
+    padding: 0 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* =========================================================
+   2. HEADER
+========================================================= */
+
+.header {
+    width: 100%;
+    height: 90px;
+    background: #000;
+    border-bottom: 1px solid #2d2d2d;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.logo img {
+    width: 200px;
+    height: 90px;
+    object-fit: contain;
+    transition: 0.3s ease;
+}
+
+.logo img:hover {
+    transform: scale(1.03);
+}
+
+/* =========================================================
+   3. NAVBAR
+========================================================= */
+
+.navbar {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.navbar a {
+    position: relative;
+    color: #fff;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+}
+
+.navbar a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+    width: 0;
+    height: 2px;
+    background: #e00000;
+    transition: width 0.3s ease;
+}
+
+.navbar a:hover {
+    color: #e00000;
+}
+
+.navbar a:hover::after {
+    width: 100%;
+}
+
+/* =========================================================
+   4. HEADER ACTIONS
+========================================================= */
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.cart-btn,
+.menu-btn {
+    border: none;
+    background: transparent;
+    color: #fff;
+    cursor: pointer;
+}
+
+.cart-btn {
+    position: relative;
+    font-size: 23px;
+    line-height: 1;
+    padding: 5px;
+}
+
+#cartCount {
+    position: absolute;
+    top: -8px;
+    right: -10px;
+    min-width: 19px;
+    height: 19px;
+    padding: 0 5px;
+    border-radius: 50%;
+    background: #e00000;
+    color: #fff;
+    font-size: 10px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.menu-btn {
+    display: none;
+    font-size: 30px;
+    padding: 4px;
+}
+
+/* =========================================================
+   5. MENÚ MÓVIL
+========================================================= */
+
+.mobile-menu {
+    position: fixed;
+    top: 0;
+    left: -300px;
+    width: 300px;
+    height: 100vh;
+    background: #111;
+    padding: 25px;
+    z-index: 9999;
+    transition: left 0.3s ease;
+    box-shadow: 5px 0 25px rgba(0, 0, 0, 0.5);
+}
+
+.mobile-menu.active {
+    left: 0;
+}
+
+.close-menu {
+    position: absolute;
+    top: 18px;
+    right: 20px;
+    border: none;
+    background: transparent;
+    color: #fff;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+.mobile-menu-logo {
+    display: flex;
+    justify-content: center;
+    margin: 25px 0 45px;
+}
+
+.mobile-menu-logo img {
+    width: 145px;
+    height: auto;
+    object-fit: contain;
+}
+
+.mobile-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.mobile-nav a {
+    padding: 18px 5px;
+    border-bottom: 1px solid #292929;
+    color: #fff;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: 0.3s ease;
+}
+
+.mobile-nav a:hover {
+    color: #e00000;
+    padding-left: 12px;
+}
+
+/* =========================================================
+   6. BOTONES GENERALES
+========================================================= */
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    min-width: 190px;
+    padding: 16px 28px;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease,
+        color 0.3s ease,
+        border-color 0.3s ease;
+}
+
+.btn span {
+    font-size: 20px;
+    line-height: 0;
+}
+
+.btn-primary {
+    background: #fff;
+    color: #000;
+    border: 1px solid #fff;
+}
+
+.btn-primary:hover {
+    background: #e00000;
+    border-color: #e00000;
+    color: #fff;
+    transform: translateY(-3px);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: #fff;
+    border: 1px solid #777;
+}
+
+.btn-secondary:hover {
+    border-color: #fff;
+    background: #fff;
+    color: #000;
+    transform: translateY(-3px);
+}
+
+/* =========================================================
+   7. HERO
+========================================================= */
+
+.hero {
+    min-height: 100vh;
+    padding-top: 90px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    background: #000;
+}
+
+.hero-image {
+
+    position: absolute;
+    inset: 90px 0 0;
+    z-index: 1;
+}
+
+.hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 15%;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 90px 0 0;
+    z-index: 2;
+    background:
+        linear-gradient(90deg, rgba(0, 0, 0, 0.92) 0%, rgba(0, 0, 0, 0.65) 45%, rgba(0, 0, 0, 0.28) 100%),
+        linear-gradient(0deg, rgba(0, 0, 0, 0.65), transparent 45%);
+}
+
+.hero-container {
+    width: 100%;
+    max-width: 1250px;
+    margin: auto;
+    padding: 80px 30px;
+    position: relative;
+    z-index: 10;
+}
+
+.hero-content {
+    max-width: 800px;
+}
+
+.hero-subtitle {
+    color: #e00000;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 5px;
+    margin-bottom: 20px;
+}
+
+.hero h1 {
+    font-family: Montserrat, Arial, sans-serif;
+    font-size: clamp(60px, 10vw, 140px);
+    line-height: 0.85;
+    font-weight: 900;
+    letter-spacing: -5px;
+}
+
+.hero h1 span {
+    color: #e00000;
+}
+
+.hero-description {
+    margin-top: 30px;
+    color: #d0d0d0;
+    font-size: 18px;
+    letter-spacing: 1px;
+}
+
+.hero-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 35px;
+}
+
+.hero-bottom {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-top: 70px;
+    color: #aaa;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.hero-number {
+    color: #777;
+    transition: color 0.3s ease;
+}
+
+.hero-number.active {
+    color: #fff;
+}
+
+.hero-line {
+    width: 60px;
+    height: 1px;
+    background: #555;
+}
+
+/* =========================================================
+   8. ENCABEZADOS DE SECCIÓN
+========================================================= */
+
+.section-heading {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.section-heading>p {
+    color: #e00000;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    margin-bottom: 15px;
+}
+
+.section-heading h2 {
+    font-family: Montserrat, Arial, sans-serif;
+    font-size: clamp(38px, 5vw, 65px);
+    line-height: 0.95;
+    font-weight: 900;
+    letter-spacing: -2px;
+}
+
+.section-heading h2 span {
+    color: #e00000;
+}
+
+.heading-line {
+    width: 55px;
+    height: 2px;
+    margin: 22px auto;
+    background: #e00000;
+}
+
+.section-heading small {
+    color: #888;
+    font-size: 13px;
+    letter-spacing: 1px;
+}
+
+/* =========================================================
+   9. COLECCIÓN
+========================================================= */
+
+.collection-section {
+    padding: 120px 30px;
+    background: #000;
+}
+
+.collection-grid {
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.collection-card {
+    background: #101010;
+    border: 1px solid #242424;
+    overflow: hidden;
+    transition: transform 0.35s ease, border-color 0.35s ease;
+}
+
+.collection-card:hover {
+    transform: translateY(-8px);
+    border-color: #555;
+}
+
+.collection-image {
+    height: 420px;
+    position: relative;
+    overflow: hidden;
+    background: #151515;
+}
+
+.collection-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.collection-card:hover .collection-image img {
+    transform: scale(1.05);
+}
+
+.collection-number {
+    position: absolute;
+    top: 18px;
+    left: 18px;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.collection-content {
+    padding: 30px;
+}
+
+.collection-content h3 {
+    font-family: Montserrat, Arial, sans-serif;
+    font-size: 25px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.collection-content p {
+    color: #888;
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.collection-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 15px;
+    margin-top: 25px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    transition: color 0.3s ease;
+}
+
+.collection-btn span {
+    font-size: 19px;
+}
+
+.collection-btn:hover {
+    color: #e00000;
+}
+
+/* =========================================================
+   10. BANNER DE ESTILO
+========================================================= */
+
+.style-banner {
+    min-height: 600px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    padding: 100px 7%;
+}
+
+.style-banner-image {
+    position: absolute;
+    inset: 0;
+}
+
+.style-banner-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.style-banner-overlay {
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(90deg, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.48)),
+        linear-gradient(0deg, rgba(0, 0, 0, 0.35), transparent);
+}
+
+.style-banner-content {
+    position: relative;
+    z-index: 5;
+    max-width: 650px;
+}
+
+.style-banner-content>p {
+    color: #e00000;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    margin-bottom: 20px;
+}
+
+.style-banner-content h2 {
+    font-family: Montserrat, Arial, sans-serif;
+    font-size: clamp(45px, 6vw, 80px);
+    line-height: 0.95;
+    font-weight: 900;
+    letter-spacing: -3px;
+}
+
+.style-banner-content h2 span {
+    color: #e00000;
+}
+
+.benefits {
+    position: absolute;
+    z-index: 5;
+    right: 7%;
+    bottom: 70px;
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    gap: 30px;
+}
+
+.benefit {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.benefit-icon {
+    width: 40px;
+    height: 40px;
+    border: 1px solid #555;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 17px;
+}
+
+.benefit strong {
+    display: block;
+    font-size: 10px;
+    letter-spacing: 2px;
+}
+
+.benefit small {
+    display: block;
+    margin-top: 4px;
+    color: #888;
+    font-size: 10px;
+}
+
+/* =========================================================
+   11. MARCAS
+========================================================= */
+
+.brands-section {
+    padding: 120px 30px;
+    background: #050505;
+}
+
+.brands-grid {
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+}
+
+.brand-card {
+    height: 500px;
+    position: relative;
+    overflow: hidden;
+    display: block;
+    text-decoration: none;
+    background: #111;
+}
+
+.brand-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.brand-card:hover img {
+    transform: scale(1.06);
+}
+
+.brand-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.08));
+}
+
+.brand-content {
+    position: absolute;
+    left: 35px;
+    right: 35px;
+    bottom: 35px;
+    z-index: 2;
+}
+
+.brand-content h3 {
+    font-family: Montserrat, Arial, sans-serif;
+    font-size: 34px;
+    font-weight: 900;
+    letter-spacing: 2px;
+}
+
+.brand-content span {
+    display: inline-block;
+    margin-top: 12px;
+    color: #ddd;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    transition: color 0.3s ease;
+}
+
+.brand-card:hover .brand-content span {
+    color: #e00000;
+}
+
+/* =========================================================
+   12. MENSAJE FINAL
+========================================================= */
+
+.final-message {
+    padding: 130px 30px;
+    text-align: center;
+    background: #000;
+}
+
+.final-message>p {
+    color: #e00000;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    margin-bottom: 20px;
+}
+
+.final-message h2 {
+    font-family: Montserrat, Arial, sans-serif;
+    font-size: clamp(42px, 6vw, 80px);
+    line-height: 0.95;
+    font-weight: 900;
+    letter-spacing: -3px;
+}
+
+.final-message h2 span {
+    color: #e00000;
+}
+
+.final-message .btn {
+    margin-top: 40px;
+}
+
+/* =========================================================
+   13. WHATSAPP
+========================================================= */
+
+.whatsapp-float {
+    position: fixed;
+    right: 25px;
+    bottom: 40px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: #25D366;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9998;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.45);
+    transition: transform 0.3s ease;
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.1);
+}
+
+.whatsapp-float img {
+    width: 38px;
+    height: 38px;
+}
+
+/* =========================================================
+   14. RESPONSIVE — TABLET
+========================================================= */
+
+@media (max-width: 1000px) {
+
+    .navbar {
+        gap: 22px;
+    }
+
+    .navbar a {
+        font-size: 10px;
+    }
+
+    .collection-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .collection-card:last-child {
+        grid-column: 1 / -1;
+        max-width: 50%;
+        margin: auto;
+    }
+
+    .benefits {
+        right: 5%;
+        gap: 15px;
+    }
+
+    .benefit {
+        gap: 7px;
+    }
+
+    .brand-card {
+        height: 430px;
+    }
+}
+
+/* =========================================================
+   15. RESPONSIVE — MÓVIL
+========================================================= */
+
+@media (max-width: 768px) {
+
+    .header {
+        height: 80px;
+    }
+
+    .container {
+        padding: 0 20px;
+    }
+
+    .navbar {
+        display: none !important;
+    }
+
+    .logo img {
+        width: 85px;
+        height: 80px;
+    }
+
+    .menu-btn {
+        display: block;
+    }
+
+    .header-actions {
+        gap: 15px;
+    }
+
+    .cart-btn {
+        font-size: 21px;
+    }
+
+    .hero {
+        min-height: 100vh;
+        padding-top: 80px;
+    }
+
+    .hero-image,
+    .hero-overlay {
+        inset: 80px 0 0;
+    }
+
+    .hero-image img {
+        object-position: center;
+    }
+
+    .hero-overlay {
+        background:
+            linear-gradient(90deg, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.55)),
+            linear-gradient(0deg, rgba(0, 0, 0, 0.8), transparent);
+    }
+
+    .hero-container {
+        padding: 60px 25px;
+    }
+
+    .hero-subtitle {
+        font-size: 9px;
+        letter-spacing: 3px;
+    }
+
+    .hero h1 {
+        font-size: clamp(55px, 18vw, 95px);
+        letter-spacing: -4px;
+    }
+
+    .hero-description {
+        font-size: 15px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .btn {
+        min-width: 185px;
+    }
+
+    .hero-bottom {
+        margin-top: 45px;
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+
+    .hero-line {
+        width: 35px;
+    }
+
+    .collection-section,
+    .brands-section {
+        padding: 90px 20px;
+    }
+
+    .section-heading {
+        margin-bottom: 40px;
+    }
+
+    .section-heading h2 {
+        font-size: 42px;
+    }
+
+    .collection-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .collection-card:last-child {
+        grid-column: auto;
+        max-width: none;
+    }
+
+    .collection-image {
+        height: 390px;
+    }
+
+    .style-banner {
+        min-height: 700px;
+        padding: 80px 25px;
+        align-items: flex-start;
+    }
+
+    .style-banner-content h2 {
+        font-size: 52px;
+    }
+
+    .benefits {
+        position: absolute;
+        left: 25px;
+        right: 25px;
+        bottom: 45px;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 22px 15px;
+    }
+
+    .brands-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .brand-card {
+        height: 420px;
+    }
+
+    .final-message {
+        padding: 100px 20px;
+    }
+
+    .final-message h2 {
+        font-size: 48px;
+    }
+
+    .whatsapp-float {
+        width: 55px;
+        height: 55px;
+        right: 18px;
+        bottom: 18px;
+    }
+
+    .whatsapp-float img {
+        width: 34px;
+        height: 34px;
+    }
+}
+
+/* =========================================================
+   16. RESPONSIVE — MÓVIL PEQUEÑO
+========================================================= */
+
+@media (max-width: 480px) {
+
+    .mobile-menu {
+        width: 280px;
+        left: -280px;
+    }
+
+    .hero-container {
+        padding: 50px 20px;
+    }
+
+    .hero h1 {
+        font-size: 57px;
+    }
+
+    .hero-bottom span:nth-of-type(n+4) {
+        display: none;
+    }
+
+    .collection-image {
+        height: 350px;
+    }
+
+    .collection-content {
+        padding: 25px;
+    }
+
+    .style-banner {
+        min-height: 720px;
+    }
+
+    .style-banner-content h2 {
+        font-size: 44px;
+    }
+
+    .benefits {
+        grid-template-columns: 1fr 1fr;
+        gap: 20px 10px;
+    }
+
+    .benefit-icon {
+        width: 35px;
+        height: 35px;
+        font-size: 14px;
+    }
+
+    .benefit strong {
+        font-size: 9px;
+    }
+
+    .benefit small {
+        font-size: 9px;
+    }
+
+    .brand-card {
+        height: 350px;
+    }
+
+    .brand-content {
+        left: 25px;
+        right: 25px;
+        bottom: 25px;
+    }
+
+    .brand-content h3 {
+        font-size: 27px;
+    }
+
+    .final-message h2 {
+        font-size: 40px;
+    }
+}
+
+/* =========================================================
+   REDES SOCIALES FLOTANTES — BOXER HOUSE
+========================================================= */
+
+.social-float {
+    position: fixed;
+    left: 25px;
+    bottom: 25px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    z-index: 9997;
+}
+
+.social-link {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #111;
+    border: 1px solid #333;
+    border-radius: 50%;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.35);
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease,
+        border-color 0.3s ease;
+}
+
+.social-link img {
+    width: 27px;
+    height: 27px;
+    object-fit: contain;
+}
+
+.social-link:hover {
+    transform: translateY(-5px);
+    background: #222;
+    border-color: #e00000;
+}
+
+/* Ajustes para celulares */
+@media (max-width: 768px) {
+    .social-float {
+        left: 15px;
+        bottom: 18px;
+        gap: 8px;
+    }
+
+    .social-link {
+        width: 43px;
+        height: 43px;
+    }
+
+    .social-link img {
+        width: 24px;
+        height: 24px;
+    }
+}
+
+
+
+
+
+/* =========================================================
+   AJUSTE EXCLUSIVO DE LA IMAGEN DE LA SEGUNDA MARCA
+========================================================= */
+
+.brand-card:nth-child(2) .brand-image {
+    overflow: hidden;
+}
+
+.brand-card:nth-child(2) .image-placeholder {
+    width: 100%;
+    height: 503px;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+    position: relative;
+}
+
+.brand-card:nth-child(2) .tommy-image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+    position: static;
+    transform: none;
+    margin: 0;
+}

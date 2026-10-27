@@ -1,0 +1,8 @@
+[
+  {"id":"boxer-x1","name":"BOXER X1","image":"negroAdelante.png"},
+  {"id":"pack-x3","name":"PACK X3","image":"packX3.png"},
+  {"id":"pack-x5","name":"PACK X5","image":"packX5.png"},
+  {"id":"clasico-x1","name":"BOXER CLÁSICO X1","image":"blancoClasicoModelo2.png"},
+  {"id":"clasico-x3","name":"PACK X3 CLÁSICO","image":"Clasico X3.png"},
+  {"id":"clasico-x5","name":"PACK X5 CLÁSICO","image":"Clasico X5.png"}
+]

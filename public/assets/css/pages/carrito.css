@@ -1,0 +1,974 @@
+/* =====================================================
+           CARRITO BOXER HOUSE
+        ===================================================== */
+
+        .cart-page {
+
+            min-height: 100vh;
+
+            background: #080808;
+
+            color: #ffffff;
+
+            padding:
+                140px 30px 80px;
+
+        }
+
+
+        .cart-container {
+
+            max-width: 1200px;
+
+            margin: 0 auto;
+
+        }
+
+
+        /* =====================================================
+           ENCABEZADO
+        ===================================================== */
+
+        .cart-header {
+
+            margin-bottom: 50px;
+
+        }
+
+
+        .cart-number {
+
+            display: block;
+
+            color: #e00000;
+
+            font-size: 80px;
+
+            font-weight: 900;
+
+            line-height: 0.8;
+
+            letter-spacing: -5px;
+
+            margin-bottom: 25px;
+
+        }
+
+
+        .cart-label {
+
+            display: block;
+
+            color: #e00000;
+
+            font-size: 12px;
+
+            font-weight: 900;
+
+            letter-spacing: 4px;
+
+            margin-bottom: 15px;
+
+        }
+
+
+        .cart-header h1 {
+
+            margin: 0;
+
+            font-size: clamp(
+                55px,
+                8vw,
+                100px
+            );
+
+            line-height: 0.85;
+
+            font-weight: 900;
+
+            letter-spacing: -5px;
+
+        }
+
+
+        .cart-header p {
+
+            color: #999999;
+
+            font-size: 16px;
+
+            margin-top: 25px;
+
+        }
+
+
+        /* =====================================================
+           CONTENIDO
+        ===================================================== */
+
+        .cart-content {
+
+            display: grid;
+
+            grid-template-columns:
+                1fr 350px;
+
+            gap: 30px;
+
+            align-items: start;
+
+        }
+
+
+        /* =====================================================
+           PRODUCTOS
+        ===================================================== */
+
+        .cart-items {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 18px;
+
+        }
+
+
+        .cart-item {
+
+            display: grid;
+
+            grid-template-columns:
+                150px 1fr auto;
+
+            gap: 25px;
+
+            align-items: center;
+
+            background: #111111;
+
+            border: 1px solid #292929;
+
+            padding: 20px;
+
+            transition:
+                transform 0.3s ease,
+                border-color 0.3s ease;
+
+        }
+
+
+        .cart-item:hover {
+
+            transform: translateY(-3px);
+
+            border-color: #444444;
+
+        }
+
+
+        /* =====================================================
+           IMAGEN
+        ===================================================== */
+
+        .cart-item-image {
+
+            width: 150px;
+
+            height: 180px;
+
+            background: #ffffff;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            overflow: hidden;
+
+        }
+
+
+        .cart-item-image img {
+
+            width: 100%;
+
+            height: 100%;
+
+            object-fit: contain;
+
+        }
+
+
+        /* =====================================================
+           INFORMACIÓN
+        ===================================================== */
+
+        .cart-item-info {
+
+            align-self: center;
+
+        }
+
+
+        .cart-item-brand {
+
+            display: block;
+
+            color: #888888;
+
+            font-size: 11px;
+
+            font-weight: 900;
+
+            letter-spacing: 3px;
+
+            margin-bottom: 8px;
+
+        }
+
+
+        .cart-item-info h2 {
+
+            margin: 0 0 15px;
+
+            font-size: 28px;
+
+            font-weight: 900;
+
+        }
+
+
+        .cart-item-details {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 5px;
+
+        }
+
+
+        .cart-detail {
+
+            color: #999999;
+
+            font-size: 14px;
+
+        }
+
+
+        .cart-item-price {
+
+            margin-top: 20px;
+
+            font-size: 20px;
+
+            font-weight: 900;
+
+        }
+
+
+        /* =====================================================
+           CANTIDAD
+        ===================================================== */
+
+        .cart-item-quantity {
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            gap: 15px;
+
+        }
+
+
+        .cart-item-quantity > span {
+
+            color: #777777;
+
+            font-size: 10px;
+
+            font-weight: 900;
+
+            letter-spacing: 2px;
+
+        }
+
+
+        .quantity-controls {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+        }
+
+
+        .quantity-btn {
+
+            width: 35px;
+
+            height: 35px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            background: #222222;
+
+            color: #ffffff;
+
+            text-decoration: none;
+
+            font-size: 18px;
+
+            transition:
+                background 0.3s ease;
+
+        }
+
+
+        .quantity-btn:hover {
+
+            background: #e00000;
+
+        }
+
+
+        .quantity-number {
+
+            min-width: 25px;
+
+            text-align: center;
+
+            font-weight: 900;
+
+        }
+
+
+        .remove-product {
+
+            color: #777777;
+
+            text-decoration: none;
+
+            font-size: 10px;
+
+            font-weight: 900;
+
+            letter-spacing: 1px;
+
+            transition:
+                color 0.3s ease;
+
+        }
+
+
+        .remove-product:hover {
+
+            color: #e00000;
+
+        }
+
+
+        /* =====================================================
+           RESUMEN
+        ===================================================== */
+
+        .cart-summary {
+
+            position: sticky;
+
+            top: 120px;
+
+            background: #ffffff;
+
+            color: #080808;
+
+            padding: 35px;
+
+        }
+
+
+        .cart-summary-label {
+
+            display: block;
+
+            color: #777777;
+
+            font-size: 10px;
+
+            font-weight: 900;
+
+            letter-spacing: 4px;
+
+            margin-bottom: 20px;
+
+        }
+
+
+        .cart-summary h2 {
+
+            margin: 0 0 40px;
+
+            font-size: 32px;
+
+            font-weight: 900;
+
+        }
+
+
+        .cart-summary-row {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            padding: 15px 0;
+
+            border-bottom: 1px solid #dddddd;
+
+            font-size: 14px;
+
+        }
+
+
+        .cart-summary-row strong {
+
+            font-weight: 900;
+
+        }
+
+
+        .cart-summary-total {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            margin-top: 25px;
+
+            padding-top: 20px;
+
+            font-size: 18px;
+
+            font-weight: 900;
+
+        }
+
+
+        .cart-summary-total strong {
+
+            font-size: 25px;
+
+        }
+
+
+        /* =====================================================
+           BOTÓN WHATSAPP
+        ===================================================== */
+
+        .cart-btn-primary {
+
+            width: 100%;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            margin-top: 30px;
+
+            padding: 18px 20px;
+
+            border: none;
+
+            background: #e00000;
+
+            color: #ffffff;
+
+            text-decoration: none;
+
+            font-size: 12px;
+
+            font-weight: 900;
+
+            letter-spacing: 1px;
+
+            cursor: pointer;
+
+            transition:
+                background 0.3s ease,
+                transform 0.3s ease;
+
+        }
+
+
+        .cart-btn-primary:hover {
+
+            background: #b00000;
+
+            transform: translateY(-2px);
+
+        }
+
+
+        .cart-btn-primary span {
+
+            font-size: 18px;
+
+        }
+
+
+        /* =====================================================
+           BOTÓN SECUNDARIO
+        ===================================================== */
+
+        .cart-btn-secondary {
+
+            width: 100%;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            margin-top: 12px;
+
+            padding: 16px 20px;
+
+            border: 1px solid #222222;
+
+            background: transparent;
+
+            color: #080808;
+
+            text-decoration: none;
+
+            font-size: 11px;
+
+            font-weight: 900;
+
+            letter-spacing: 1px;
+
+            transition:
+                background 0.3s ease,
+                color 0.3s ease;
+
+        }
+
+
+        .cart-btn-secondary:hover {
+
+            background: #080808;
+
+            color: #ffffff;
+
+        }
+
+
+        /* =====================================================
+           VACIAR
+        ===================================================== */
+
+        .clear-cart {
+
+            display: block;
+
+            margin-top: 25px;
+
+            text-align: center;
+
+            color: #777777;
+
+            font-size: 10px;
+
+            font-weight: 900;
+
+            letter-spacing: 1px;
+
+            text-decoration: none;
+
+            cursor: pointer;
+
+            transition:
+                color 0.3s ease;
+
+        }
+
+
+        .clear-cart:hover {
+
+            color: #e00000;
+
+        }
+
+
+        /* =====================================================
+           CARRITO VACÍO
+        ===================================================== */
+
+        .cart-empty {
+
+            text-align: center;
+
+            padding: 80px 30px;
+
+            background: #111111;
+
+            border: 1px solid #292929;
+
+        }
+
+
+        .cart-empty-number {
+
+            display: block;
+
+            color: #e00000;
+
+            font-size: 70px;
+
+            font-weight: 900;
+
+            margin-bottom: 20px;
+
+        }
+
+
+        .cart-empty h2 {
+
+            font-size: 35px;
+
+            margin: 0 0 15px;
+
+        }
+
+
+        .cart-empty p {
+
+            color: #888888;
+
+            margin-bottom: 30px;
+
+        }
+
+
+        .cart-empty a {
+
+            display: inline-block;
+
+            padding: 15px 25px;
+
+            background: #e00000;
+
+            color: #ffffff;
+
+            text-decoration: none;
+
+            font-size: 12px;
+
+            font-weight: 900;
+
+        }
+
+
+        /* =====================================================
+           FORMULARIO WHATSAPP
+        ===================================================== */
+
+        .whatsapp-form-overlay {
+
+            position: fixed;
+
+            inset: 0;
+
+            z-index: 9999;
+
+            display: none;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding: 20px;
+
+            background: rgba(0, 0, 0, 0.85);
+
+        }
+
+
+        .whatsapp-form-box {
+
+            width: 100%;
+
+            max-width: 550px;
+
+            max-height: 90vh;
+
+            overflow-y: auto;
+
+            position: relative;
+
+            background: #111111;
+
+            border: 1px solid #333333;
+
+            color: #ffffff;
+
+            padding: 40px;
+
+        }
+
+
+        .whatsapp-form-close {
+
+            position: absolute;
+
+            top: 15px;
+
+            right: 15px;
+
+            width: 35px;
+
+            height: 35px;
+
+            border: none;
+
+            background: #e00000;
+
+            color: #ffffff;
+
+            font-size: 22px;
+
+            cursor: pointer;
+
+        }
+
+
+        .whatsapp-form-box h2 {
+
+            margin: 0 0 10px;
+
+            font-size: 32px;
+
+            font-weight: 900;
+
+        }
+
+
+        .whatsapp-form-box p {
+
+            color: #999999;
+
+            font-size: 14px;
+
+            margin-bottom: 30px;
+
+        }
+
+
+        .whatsapp-form-group {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 8px;
+
+            margin-bottom: 20px;
+
+        }
+
+
+        .whatsapp-form-group label {
+
+            color: #ffffff;
+
+            font-size: 10px;
+
+            font-weight: 900;
+
+            letter-spacing: 2px;
+
+        }
+
+
+        .whatsapp-form-group input {
+
+            width: 100%;
+
+            box-sizing: border-box;
+
+            padding: 14px;
+
+            background: #ffffff;
+
+            color: #080808;
+
+            border: 1px solid #444444;
+
+            outline: none;
+
+            font-size: 14px;
+
+        }
+
+
+        .whatsapp-form-group input:focus {
+
+            border-color: #e00000;
+
+        }
+
+
+        .whatsapp-submit {
+
+            width: 100%;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            padding: 18px 20px;
+
+            margin-top: 10px;
+
+            border: none;
+
+            background: #e00000;
+
+            color: #ffffff;
+
+            font-size: 12px;
+
+            font-weight: 900;
+
+            letter-spacing: 1px;
+
+            cursor: pointer;
+
+        }
+
+
+        .whatsapp-submit:hover {
+
+            background: #b00000;
+
+        }
+
+
+        /* =====================================================
+           RESPONSIVE
+        ===================================================== */
+
+        @media (max-width: 900px) {
+
+            .cart-content {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .cart-summary {
+
+                position: static;
+
+            }
+
+        }
+
+
+        @media (max-width: 600px) {
+
+            .cart-page {
+
+                padding:
+                    110px 15px 60px;
+
+            }
+
+
+            .cart-number {
+
+                font-size: 60px;
+
+            }
+
+
+            .cart-header h1 {
+
+                font-size: 55px;
+
+                letter-spacing: -3px;
+
+            }
+
+
+            .cart-item {
+
+                grid-template-columns:
+                    100px 1fr;
+
+                gap: 15px;
+
+            }
+
+
+            .cart-item-image {
+
+                width: 100px;
+
+                height: 120px;
+
+            }
+
+
+            .cart-item-quantity {
+
+                grid-column: 2;
+
+                align-items: flex-start;
+
+            }
+
+
+            .cart-item-info h2 {
+
+                font-size: 21px;
+
+            }
+
+
+            .whatsapp-form-box {
+
+                padding: 30px 20px;
+
+            }
+
+
+            .whatsapp-form-box h2 {
+
+                font-size: 25px;
+
+            }
+
+        }

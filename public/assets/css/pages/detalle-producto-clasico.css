@@ -1,0 +1,103 @@
+.product-thumbnails {
+
+            display: flex;
+
+            gap: 12px;
+
+            margin-top: 15px;
+
+            width: 100%;
+
+            overflow-x: auto;
+
+        }
+
+
+        .product-thumbnails .thumbnail {
+
+            flex: 0 0 75px;
+
+            width: 75px;
+
+            height: 75px;
+
+            padding: 0;
+
+            border: 2px solid transparent;
+
+            background: #ffffff;
+
+            cursor: pointer;
+
+            overflow: hidden;
+
+            border-radius: 6px;
+
+        }
+
+
+        .product-thumbnails .thumbnail img {
+
+            width: 100%;
+
+            height: 100%;
+
+            object-fit: cover;
+
+            display: block;
+
+        }
+
+
+        .product-thumbnails .thumbnail.active {
+
+            border: 2px solid #080808;
+
+        }
+
+
+        .product-thumbnails .thumbnail:hover {
+
+            border-color: #080808;
+
+        }
+
+
+        .product-detail-image img {
+
+            width: 100%;
+
+            height: 100%;
+
+            object-fit: contain;
+
+            display: block;
+
+        }
+
+
+        /* =================================================
+           TALLAS
+        ================================================= */
+
+        .size-option {
+
+            cursor: pointer;
+
+        }
+
+
+        .size-option:disabled {
+
+            cursor: not-allowed;
+
+            opacity: 0.45;
+
+        }
+
+
+        .size-option.active {
+
+            border-color: #080808;
+
+        }

@@ -1,0 +1,18 @@
+# Configuración local y credenciales
+/config/database.php
+.env
+.env.*
+!.env.example
+
+# Archivos del sistema y editores
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Archivos temporales
+*.log
+__pycache__/
+
+# Evidencias y archivos de trabajo locales
+.local/
